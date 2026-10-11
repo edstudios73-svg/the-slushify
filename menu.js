@@ -4,15 +4,16 @@ import {
   categories,
   menuItems,
   arrowIcon,
-  drip,
-  burst,
+  icon,
+  rings,
+  frameMarkup,
+  dishCard,
   renderHeader,
   renderFooter,
-  menuCard,
   bindChrome,
 } from './shared.js'
 
-const filters = [{ id: 'all', label: 'All' }, ...categories]
+const filters = [{ id: 'all', short: 'All', icon: 'martini' }, ...categories]
 
 document.querySelector('#app').innerHTML = `
   ${renderHeader({ active: 'menu' })}
@@ -20,43 +21,40 @@ document.querySelector('#app').innerHTML = `
   <main id="main" class="menu-page">
     <section class="page-hero">
       <div class="hero-bg" aria-hidden="true"></div>
+      ${rings('page-rings')}
       <div class="container">
-        <p class="pill">East Legon · Accra</p>
-        <h1 class="retro retro-light retro-xl">The Menu</h1>
-        <p class="page-hero-lead">Slushies, burgers, fries and combos. Tap any item to order on WhatsApp.</p>
+        <p class="kicker">Cocktail / Mocktail Bar <span>·</span> East Legon</p>
+        <h1><span class="script">the</span><span class="display display-xl">Menu</span></h1>
+        <p class="page-hero-lead">Tap any item to order on WhatsApp.</p>
       </div>
     </section>
 
-    <section class="cream section-drip" id="combos">
-      ${drip('drip-choc')}
-      <div class="container">
-        <div class="deal-card" data-reveal>
-          <div class="deal-img">
-            <img src="/images/cats/combo_meal.jpg" alt="GHC 150 combo: burger, fries, sauce and a slushy" loading="lazy" decoding="async" />
-            ${burst('GHC<br>150', 'deal-burst')}
-          </div>
-          <div class="deal-copy">
-            <p class="deal-kicker">The deal is back</p>
-            <h2 class="retro retro-light">Combo + Slushy</h2>
-            <p>Burger, fries, sauce and your pick of any slushy.</p>
-            <a class="btn btn-mustard" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
-          </div>
+    <section class="promo promo--menu" id="combos">
+      <div class="container promo-grid">
+        <div class="promo-art">
+          ${frameMarkup({ image: '/images/cats/combo_meal_3.jpg', alt: 'GHC 150 combo with a pink slushy at the booth', price: 'GHC 150' }, 'ticket')}
+        </div>
+        <div class="promo-copy">
+          <p class="script">the deal is back</p>
+          <h2 class="display">Combo + Slushy</h2>
+          <p class="promo-price"><span>GHC</span>150</p>
+          <a class="btn btn-white" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
         </div>
       </div>
     </section>
 
-    <section class="cream menu-board" id="menu-board">
+    <section class="menu-board" id="menu-board">
       <div class="container">
         <div class="filters" role="group" aria-label="Filter menu">
           ${filters
             .map(
               (f, i) =>
-                `<button class="chip" type="button" data-filter="${f.id}" aria-pressed="${i === 0}">${f.label}</button>`
+                `<button class="chip" type="button" data-filter="${f.id}" aria-pressed="${i === 0}">${icon(f.icon, 'icon icon-sm')} ${f.short}</button>`
             )
             .join('')}
         </div>
         <div class="menu-grid" data-menu-grid>
-          ${menuItems.map(menuCard).join('')}
+          ${menuItems.map(dishCard).join('')}
         </div>
       </div>
     </section>
