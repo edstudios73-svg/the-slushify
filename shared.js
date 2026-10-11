@@ -26,7 +26,7 @@ export const eventLink = wa(
 const img = (file) => `/images/cats/${file}`
 
 export const categories = [
-  { id: 'slushies', label: 'Slushies & Mocktails', short: 'Slushies', script: 'Pour', blurb: 'Frozen, smoking, poured to order.', image: img('slushy_8.jpg'), frame: 'ring', icon: 'cup' },
+  { id: 'slushies', label: 'Slushies & Mocktails', short: 'Slushies', script: 'Pour', blurb: 'Frozen, smoking, poured to order.', image: img('slushy_8.jpg'), frame: 'cup', icon: 'cup' },
   { id: 'burgers', label: 'Burgers', short: 'Burgers', script: 'Stack', blurb: 'Melty, stacked, classic.', image: img('burger_3.jpg'), frame: 'stamp', icon: 'burger' },
   { id: 'fries', label: 'Fries', short: 'Fries', script: 'Crunch', blurb: 'Golden, crisp, salted.', image: img('fries_4.jpg'), frame: 'arch', icon: 'fries' },
   { id: 'combos', label: 'Combos', short: 'Combos', script: 'Share', blurb: 'Burger, fries & a slushy.', image: img('combo_meal_3.jpg'), frame: 'ticket', icon: 'combo' },
@@ -96,6 +96,10 @@ export const navLinks = [
 const arrow = '<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" /></svg>'
 export const arrowIcon = arrow
 
+/** Melting edge between sections — colour comes from the `drip-*` class. */
+export const drip = (cls = '') =>
+  `<svg class="drip ${cls}" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0H1440V24H1424Q1414 24 1414 34V84A14 14 0 0 1 1386 84V34Q1386 24 1376 24H1299Q1289 24 1289 34V53A17 17 0 0 1 1255 53V34Q1255 24 1245 24H1203Q1193 24 1193 34V81A17 17 0 0 1 1159 81V34Q1159 24 1149 24H1101Q1091 24 1091 34V87A11 11 0 0 1 1069 87V34Q1069 24 1059 24H989Q979 24 979 34V47A11 11 0 0 1 957 47V34Q957 24 947 24H915Q905 24 905 34V81A17 17 0 0 1 871 81V34Q871 24 861 24H787Q777 24 777 34V53A17 17 0 0 1 743 53V34Q743 24 733 24H707Q697 24 697 34V41A17 17 0 0 1 663 41V34Q663 24 653 24H621Q611 24 611 34V59A11 11 0 0 1 589 59V34Q589 24 579 24H531Q521 24 521 34V41A17 17 0 0 1 487 41V34Q487 24 477 24H400Q390 24 390 34V84A14 14 0 0 1 362 84V34Q362 24 352 24H307Q297 24 297 34V53A17 17 0 0 1 263 53V34Q263 24 253 24H192Q182 24 182 34V44A14 14 0 0 1 154 44V34Q154 24 144 24H112Q102 24 102 34V70A14 14 0 0 1 74 70V34Q74 24 64 24H0Z" fill="currentColor"/></svg>`
+
 /** Line-art icons, drawn to match the martini glasses in the logo. */
 const iconPaths = {
   martini: '<path d="M5 5h22L16 17z"/><path d="M16 17v10"/><path d="M10 27h12"/><path d="M21 9l4-5"/><circle cx="25.5" cy="3.5" r="1.5"/>',
@@ -134,6 +138,8 @@ export function frameMarkup(item, frame) {
   switch (frame) {
     case 'ring':
       return `<div class="frame frame-ring"><span class="frame-ring-img">${pic}</span>${rings('frame-rings')}${badge(item)}</div>`
+    case 'cup':
+      return `<div class="frame frame-cup"><span class="cup">${pic}</span>${badge(item)}</div>`
     case 'stamp':
       return `<div class="frame frame-stamp"><span class="stamp">${pic}</span>${badge(item)}</div>`
     case 'arch':

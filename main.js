@@ -8,6 +8,7 @@ import {
   moments,
   space,
   arrowIcon,
+  drip,
   icon,
   rings,
   frameMarkup,
@@ -35,8 +36,10 @@ const steps = [
 
 const categorySection = (cat, i) => {
   const items = menuItems.filter((m) => m.category === cat.id)
+  const light = i === 0
+  const cls = ['cat-section', `cat-section--${cat.frame}`, light ? 'light' : i % 2 ? 'is-alt' : '', i === 1 ? 'after-drip' : '']
   return `
-    <section class="cat-section cat-section--${cat.frame}${i % 2 ? ' is-alt' : ''}" id="${cat.id}">
+    <section class="${cls.filter(Boolean).join(' ')}" id="${cat.id}">
       <div class="container cat-head" data-reveal>
         <span class="cat-icon">${icon(cat.icon)}</span>
         <div>
@@ -44,9 +47,10 @@ const categorySection = (cat, i) => {
           <h2 class="display">${cat.label}</h2>
           <p class="cat-blurb">${cat.blurb}</p>
         </div>
-        <a class="link-arrow" href="/menu.html#${cat.id}">See all ${arrowIcon}</a>
+        <a class="btn btn-sm btn-view" href="/menu.html#${cat.id}">View all</a>
       </div>
       ${carousel(items.map(dishCard), { label: cat.label, cls: `carousel--${cat.frame}` })}
+      ${light ? drip('drip-white drip-flip') : ''}
     </section>`
 }
 
@@ -131,19 +135,24 @@ document.querySelector('#app').innerHTML = `
           A cocktail &amp; mocktail bar that also stacks a serious burger.
         </p>
       </div>
+      <p class="ghost-word" aria-hidden="true">Slushify</p>
     </section>
 
-    <div class="menu-intro container" id="menu" data-reveal>
-      <p class="script">the</p>
-      <h2 class="display display-xl">Menu</h2>
-      <div class="menu-intro-tabs">
-        ${categories.map((c) => `<a href="#${c.id}">${icon(c.icon, 'icon icon-sm')} ${c.short}</a>`).join('')}
+    <section class="menu-intro light section-drip" id="menu">
+      ${drip('drip-black')}
+      <div class="container" data-reveal>
+        <p class="script">the</p>
+        <h2 class="display display-xl">Menu</h2>
+        <div class="menu-intro-tabs">
+          ${categories.map((c) => `<a href="#${c.id}">${icon(c.icon, 'icon icon-sm')} ${c.short}</a>`).join('')}
+        </div>
       </div>
-    </div>
+    </section>
 
     ${categories.map(categorySection).join('')}
 
-    <section class="promo" id="deal">
+    <section class="promo section-drip" id="deal">
+      ${drip('drip-black-2')}
       <div class="container promo-grid">
         <div class="promo-art" data-reveal>
           ${frameMarkup({ image: '/images/cats/combo_meal.jpg', alt: 'GHC 150 combo: burger, fries, sauce and a slushy', price: 'GHC 150' }, 'ticket')}
@@ -160,9 +169,14 @@ document.querySelector('#app').innerHTML = `
           <a class="btn btn-white" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
         </div>
       </div>
+      ${drip('drip-red drip-flip')}
     </section>
 
-    <section class="steps">
+    <section class="steps light after-drip">
+      <div class="container center-head" data-reveal>
+        <p class="script">easy as</p>
+        <h2 class="display">One, Two, Slush</h2>
+      </div>
       <div class="container steps-grid">
         ${steps
           .map(
@@ -176,13 +190,17 @@ document.querySelector('#app').innerHTML = `
           )
           .join('')}
       </div>
+      ${drip('drip-white drip-flip')}
     </section>
 
-    <section class="people" id="moments">
-      <div class="container section-head" data-reveal>
-        <p class="script">our people</p>
-        <h2 class="display">Real Faces, Real Pours</h2>
-        <a class="link-arrow" href="${business.instagram}" target="_blank" rel="noreferrer">${business.instagramHandle} ${arrowIcon}</a>
+    <section class="people after-drip" id="moments">
+      <div class="container vibe-head" data-reveal>
+        <p class="vibe-kicker">
+          Happiness in your hands
+          <img src="${moments[1].image}" alt="" width="64" height="32" />
+        </p>
+        <h2 class="display display-xl display-outline">Feel the Vibe</h2>
+        <p class="vibe-sub">Real faces, real pours. Tag <a href="${business.instagram}" target="_blank" rel="noreferrer">${business.instagramHandle}</a> to get featured.</p>
       </div>
       ${carousel(
         moments.map((m, i) => `<div class="tilt" style="--r:${[-3, 2, -1.5, 2.5, -2, 1.5, -2.5, 2, -1][i % 9]}deg">${frameMarkup(m, 'polaroid')}</div>`),

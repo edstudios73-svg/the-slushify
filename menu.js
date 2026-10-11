@@ -4,6 +4,7 @@ import {
   categories,
   menuItems,
   arrowIcon,
+  drip,
   icon,
   rings,
   frameMarkup,
@@ -24,12 +25,13 @@ document.querySelector('#app').innerHTML = `
       ${rings('page-rings')}
       <div class="container">
         <p class="kicker">Cocktail / Mocktail Bar <span>·</span> East Legon</p>
-        <h1><span class="script">the</span><span class="display display-xl">Menu</span></h1>
+        <h1><span class="script">the</span><span class="display display-xl display-outline">Menu</span></h1>
         <p class="page-hero-lead">Tap any item to order on WhatsApp.</p>
       </div>
     </section>
 
-    <section class="promo promo--menu" id="combos">
+    <section class="promo promo--menu section-drip" id="combos">
+      ${drip('drip-black')}
       <div class="container promo-grid">
         <div class="promo-art">
           ${frameMarkup({ image: '/images/cats/combo_meal_3.jpg', alt: 'GHC 150 combo with a pink slushy at the booth', price: 'GHC 150' }, 'ticket')}
@@ -41,9 +43,10 @@ document.querySelector('#app').innerHTML = `
           <a class="btn btn-white" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
         </div>
       </div>
+      ${drip('drip-red drip-flip')}
     </section>
 
-    <section class="menu-board" id="menu-board">
+    <section class="menu-board after-drip" id="menu-board">
       <div class="container">
         <div class="filters" role="group" aria-label="Filter menu">
           ${filters

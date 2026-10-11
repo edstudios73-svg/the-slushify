@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,600..900,0..100;1,9..144,600..900,0..100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500..900;1,500..900&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* ———————————————————————————————— Tokens (from the logo: black, white, red) */
@@ -8,10 +9,12 @@
   --white: #fafafa;
   --muted: rgba(250, 250, 250, 0.64);
   --line: rgba(250, 250, 250, 0.14);
+  --line-strong: rgba(250, 250, 250, 0.35);
   --red: #ff2718;
   --red-deep: #c4180c;
 
   --display: 'Playfair Display', 'Didot', 'Bodoni 72', Georgia, serif;
+  --retro: 'Fraunces', 'Cooper Black', Georgia, serif;
   --script: 'Great Vibes', 'Snell Roundhand', cursive;
   --sans: 'Outfit', 'Segoe UI', system-ui, sans-serif;
 
@@ -139,17 +142,27 @@ figure {
 
 /* ———————————————————————————————— Type */
 .display {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-family: var(--retro);
+  font-weight: 900;
+  font-variation-settings: 'SOFT' 100, 'opsz' 144;
+  font-size: clamp(2.3rem, 6.4vw, 4.2rem);
   line-height: 1;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  text-shadow: 3px 3px 0 var(--red);
 }
 
 .display-xl {
-  font-size: clamp(3.6rem, 13vw, 8.5rem);
-  color: var(--red);
+  font-size: clamp(3.4rem, 12vw, 8rem);
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* "FEEL THE VIBE" — light fill, dark stroke, red drop */
+.display-outline {
+  color: var(--white);
+  -webkit-text-stroke: 2px var(--black);
+  paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--red);
 }
 
 .script {
@@ -157,7 +170,82 @@ figure {
   font-weight: 400;
   font-size: clamp(1.9rem, 4.5vw, 2.8rem);
   line-height: 1;
+  color: inherit;
+}
+
+/* Light sections flip the palette: white ground, black ink, red accents */
+.light {
+  --muted: rgba(10, 10, 10, 0.62);
+  --line: rgba(10, 10, 10, 0.14);
+  --line-strong: rgba(10, 10, 10, 0.4);
+  --pill-bg: var(--black);
+  --pill-fg: var(--white);
+  --cup-edge: var(--black);
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ———————————————————————————————— Drips */
+.section-drip {
+  position: relative;
+  padding-top: calc(clamp(56px, 8vw, 96px) + clamp(44px, 6vw, 92px)) !important;
+}
+
+.drip {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  height: clamp(44px, 6vw, 92px);
+  pointer-events: none;
+}
+
+.drip-flip {
+  top: auto;
+  bottom: calc(clamp(44px, 6vw, 92px) * -1 + 1px);
+  z-index: 3;
+}
+
+.drip-black {
+  color: var(--black);
+}
+.drip-black-2 {
+  color: var(--black-2);
+}
+.drip-white {
   color: var(--white);
+}
+.drip-red {
+  color: var(--red);
+}
+
+.after-drip {
+  padding-top: calc(clamp(56px, 8vw, 96px) + clamp(44px, 6vw, 92px)) !important;
+}
+
+.light + section,
+section:has(> .drip-flip) {
+  position: relative;
+}
+
+/* ———————————————————————————————— Ghost word */
+.ghost-word {
+  position: absolute;
+  left: 50%;
+  bottom: -0.2em;
+  transform: translateX(-50%);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--red);
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
+  font-size: clamp(5rem, 20vw, 17rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .kicker {
@@ -224,11 +312,29 @@ figure {
 .btn-red {
   background: var(--red);
   color: var(--white);
-  box-shadow: 0 12px 30px rgba(255, 39, 24, 0.3);
+  box-shadow: 0 4px 0 #8e0c03;
 }
 
 .btn-red:hover {
-  box-shadow: 0 16px 38px rgba(255, 39, 24, 0.45);
+  box-shadow: 0 6px 0 #8e0c03;
+}
+
+.btn-view {
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 4px 0 var(--red);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 15px;
+}
+
+.btn-view:hover {
+  box-shadow: 0 6px 0 var(--red);
+}
+
+.light .btn-view {
+  background: var(--black);
+  color: var(--white);
 }
 
 .btn-outline {
@@ -245,6 +351,7 @@ figure {
 .btn-white {
   background: var(--white);
   color: var(--black);
+  box-shadow: 0 4px 0 var(--black);
 }
 
 .btn-white:hover {
@@ -549,14 +656,17 @@ figure {
   position: relative;
   margin-top: 26px;
   padding-top: 18px;
-  font-family: var(--display);
-  font-weight: 800;
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100, 'opsz' 144;
+  font-weight: 900;
   font-size: clamp(3rem, 12vw, 6rem);
   line-height: 0.95;
   text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--red);
 }
 
 .hero-the {
+  text-shadow: none;
   position: absolute;
   top: -10px;
   left: -4px;
@@ -567,6 +677,7 @@ figure {
 }
 
 .hero-script {
+  text-shadow: none;
   display: block;
   margin-top: 4px;
   color: var(--red);
@@ -747,10 +858,10 @@ figure {
 }
 
 .band span {
-  font-family: var(--display);
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
   font-size: clamp(20px, 2.6vw, 30px);
-  font-weight: 800;
-  font-style: italic;
+  font-weight: 900;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -762,7 +873,9 @@ figure {
 
 /* ———————————————————————————————— Story: Pour. Stack. Chill. */
 .story {
-  padding: clamp(64px, 9vw, 120px) 0;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(64px, 9vw, 120px) 0 clamp(150px, 20vw, 260px);
 }
 
 .story-grid {
@@ -798,12 +911,12 @@ figure {
   right: 0;
   bottom: 12px;
   z-index: 1;
-  font-family: var(--display);
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
   font-size: clamp(18px, 4.6vw, 52px);
-  font-weight: 800;
-  font-style: italic;
+  font-weight: 900;
   text-align: center;
-  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--red);
 }
 
 .story-card:hover img {
@@ -838,8 +951,7 @@ figure {
 
 /* ———————————————————————————————— Menu intro + category sections */
 .menu-intro {
-  padding-top: clamp(24px, 4vw, 48px);
-  padding-bottom: clamp(24px, 4vw, 40px);
+  padding-bottom: clamp(8px, 2vw, 16px);
   text-align: center;
 }
 
@@ -905,7 +1017,7 @@ figure {
 }
 
 .cat-head .script {
-  margin-bottom: -0.2em;
+  margin-bottom: -0.05em;
   color: var(--red);
 }
 
@@ -914,10 +1026,10 @@ figure {
   color: var(--muted);
 }
 
-.cat-head .link-arrow {
+.cat-head .btn-view {
   grid-column: 1 / -1;
   justify-self: start;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 @media (min-width: 800px) {
@@ -931,7 +1043,7 @@ figure {
     height: 76px;
   }
 
-  .cat-head .link-arrow {
+  .cat-head .btn-view {
     grid-column: auto;
     margin: 0 0 8px;
   }
@@ -983,12 +1095,12 @@ figure {
   width: 46px;
   height: 46px;
   flex: none;
-  border: 1px solid rgba(250, 250, 250, 0.35);
+  border: 1px solid var(--line-strong);
   border-radius: 50%;
   background: transparent;
-  color: var(--white);
+  color: inherit;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .carousel-btn svg {
@@ -1004,6 +1116,7 @@ figure {
 .carousel-btn:hover {
   background: var(--red);
   border-color: var(--red);
+  color: var(--white);
 }
 
 .carousel-dots {
@@ -1020,7 +1133,7 @@ figure {
   padding: 0;
   border: 0;
   border-radius: 999px;
-  background: rgba(250, 250, 250, 0.25);
+  background: var(--line-strong);
   cursor: pointer;
   transition: width 0.3s var(--ease), background 0.3s ease;
 }
@@ -1030,6 +1143,9 @@ figure {
   background: var(--red);
 }
 
+.carousel--cup {
+  --slide: 190px;
+}
 .carousel--ring {
   --slide: 230px;
 }
@@ -1047,6 +1163,9 @@ figure {
 }
 
 @media (min-width: 800px) {
+  .carousel--cup {
+    --slide: 220px;
+  }
   .carousel--ring {
     --slide: 260px;
   }
@@ -1158,6 +1277,46 @@ figure {
 .frame-badge--price {
   font-size: 12px;
   letter-spacing: 0.06em;
+}
+
+/* Cup — the slushy cup silhouette */
+.cup {
+  display: block;
+  aspect-ratio: 3 / 4;
+  padding: 9px 9px 0;
+  background: var(--cup-edge, var(--white));
+  clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+  transition: transform 0.4s var(--ease);
+}
+
+.cup img {
+  clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+  transition: transform 0.8s var(--ease);
+}
+
+.frame-cup .frame-badge {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dish:hover .cup {
+  transform: translateY(-6px) rotate(-2deg);
+}
+
+.dish--cup .dish-body h3 {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--pill-bg, var(--white));
+  color: var(--pill-fg, var(--black));
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.dish--cup .dish-body p {
+  display: none;
 }
 
 /* Ring — the logo's swoosh circle */
@@ -1407,9 +1566,19 @@ figure {
   margin-bottom: 4px;
 }
 
+.promo .display {
+  text-shadow: 3px 3px 0 var(--black);
+}
+
+.promo {
+  position: relative;
+}
+
 .promo-price {
   margin: 10px 0 18px;
-  font-family: var(--display);
+  text-shadow: 5px 5px 0 var(--black);
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
   font-size: clamp(5rem, 14vw, 9rem);
   font-weight: 900;
   line-height: 0.9;
@@ -1452,8 +1621,18 @@ figure {
 
 /* ———————————————————————————————— Steps */
 .steps {
-  padding: clamp(56px, 8vw, 96px) 0;
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  padding: clamp(56px, 8vw, 96px) 0 clamp(72px, 9vw, 112px);
+}
+
+.center-head {
+  margin-bottom: clamp(32px, 5vw, 56px);
+  text-align: center;
+}
+
+.center-head .script {
+  color: var(--red);
+  margin-bottom: -0.05em;
 }
 
 .steps-grid {
@@ -1485,10 +1664,10 @@ figure {
 }
 
 .step h3 {
-  font-family: var(--display);
-  font-size: clamp(20px, 3vw, 30px);
-  font-weight: 800;
-  text-transform: uppercase;
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
+  font-size: clamp(22px, 3.2vw, 32px);
+  font-weight: 900;
 }
 
 .step p {
@@ -1515,6 +1694,37 @@ figure {
 }
 
 /* ———————————————————————————————— People */
+.vibe-head {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.vibe-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.vibe-kicker img {
+  width: 64px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px var(--red);
+}
+
+.vibe-sub {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.vibe-sub a {
+  color: var(--white);
+}
+
 .people {
   padding: clamp(64px, 9vw, 112px) 0 clamp(56px, 8vw, 96px);
   background: var(--black-2);
