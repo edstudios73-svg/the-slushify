@@ -1,0 +1,43 @@
+{
+  "name": "The Slushify — Cocktail / Mocktail Bar",
+  "short_name": "Slushify",
+  "description": "Slushies, mocktails, burgers, fries and the GHC 150 combo + slushy in East Legon, Accra. Order on WhatsApp: +233 50 994 9405.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "en-GH",
+  "dir": "ltr",
+  "categories": ["food", "lifestyle", "shopping"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "View the menu",
+      "short_name": "Menu",
+      "description": "Slushies, mocktails, burgers, fries and combos",
+      "url": "/menu.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "GHC 150 Combo + Slushy",
+      "short_name": "Combo deal",
+      "description": "Burger, fries, sauce and any slushy for GHC 150",
+      "url": "/menu.html#combos",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Find us",
+      "short_name": "Visit",
+      "description": "JRMX+2P9, Boundary Road, East Legon, Accra",
+      "url": "/index.html#visit",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

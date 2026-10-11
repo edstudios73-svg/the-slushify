@@ -2,24 +2,286 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="The Slushify — classic burgers, golden fries and icy slushies in East Legon, Accra. Order on WhatsApp."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>The Slushify | Slushies, Mocktails, Burgers &amp; Fries · East Legon, Accra</title>
+    <meta name="description" content="Cocktail &amp; mocktail bar in East Legon, Accra. Slushies, burgers, fries &amp; the GHC 150 combo + slushy. Order on WhatsApp: +233 50 994 9405." />
     <meta name="theme-color" content="#0a0a0a" />
-    <meta property="og:title" content="The Slushify | Good Food. Great Vibes." />
-    <meta
-      property="og:description"
-      content="Classic burgers, golden fries and icy slushies in East Legon, Accra — plus the GHC 150 combo."
-    />
+    <meta name="color-scheme" content="dark" />
+    <meta name="application-name" content="Slushify" />
+    <meta name="apple-mobile-web-app-title" content="Slushify" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="geo.region" content="GH-AA" />
+    <meta name="geo.placename" content="East Legon, Accra" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link rel="canonical" href="https://the-slushify.vercel.app/" />
+
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/hero-feast-desktop.webp" />
+    <meta property="og:site_name" content="The Slushify" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:url" content="https://the-slushify.vercel.app/" />
+    <meta property="og:title" content="The Slushify — Good Food. Great Vibes." />
+    <meta property="og:description" content="Slushies, mocktails, burgers, fries &amp; the GHC 150 combo + slushy. Boundary Rd, East Legon, Accra · Order on WhatsApp +233 50 994 9405." />
+    <meta property="og:image" content="https://the-slushify.vercel.app/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://the-slushify.vercel.app/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The Slushify logo with a slushy, burger and fries — GHC 150 combo, Boundary Rd East Legon, WhatsApp +233 50 994 9405" />
+    <meta property="business:contact_data:street_address" content="JRMX+2P9, Boundary Road" />
+    <meta property="business:contact_data:locality" content="East Legon, Accra" />
+    <meta property="business:contact_data:country_name" content="Ghana" />
+    <meta property="business:contact_data:phone_number" content="+233 50 994 9405" />
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/images/hero-feast-desktop.webp" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/images/logo.png" />
-    <title>The Slushify | Good Food. Great Vibes.</title>
+    <meta name="twitter:title" content="The Slushify — Good Food. Great Vibes." />
+    <meta name="twitter:description" content="Slushies, mocktails, burgers, fries &amp; the GHC 150 combo + slushy. Boundary Rd, East Legon, Accra · Order on WhatsApp +233 50 994 9405." />
+    <meta name="twitter:image" content="https://the-slushify.vercel.app/og-image.jpg" />
+    <meta name="twitter:image:alt" content="The Slushify logo with a slushy, burger and fries — GHC 150 combo, Boundary Rd East Legon, WhatsApp +233 50 994 9405" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": [
+          "Restaurant",
+          "BarOrPub"
+        ],
+        "@id": "https://the-slushify.vercel.app/#business",
+        "name": "The Slushify",
+        "alternateName": "Slushify",
+        "slogan": "Good Food. Great Vibes.",
+        "description": "Cocktail & mocktail bar in East Legon, Accra serving frozen slushies, mocktails, burgers, fries and the GHC 150 combo + slushy. Order on WhatsApp.",
+        "url": "https://the-slushify.vercel.app/",
+        "logo": "https://the-slushify.vercel.app/icons/icon-512.png",
+        "image": [
+          "https://the-slushify.vercel.app/og-image.jpg",
+          "https://the-slushify.vercel.app/images/cats/slushy_8.jpg",
+          "https://the-slushify.vercel.app/images/cats/burger_3.jpg",
+          "https://the-slushify.vercel.app/images/cats/the_space_2.jpg"
+        ],
+        "telephone": "+233509949405",
+        "foundingDate": "2023",
+        "servesCuisine": [
+          "Slushies",
+          "Mocktails",
+          "Cocktails",
+          "Burgers",
+          "Fries"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "JRMX+2P9, Boundary Road",
+          "addressLocality": "East Legon",
+          "addressRegion": "Greater Accra",
+          "addressCountry": "GH"
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=THE+SLUSHIFY+JRMX%2B2P9+Accra",
+        "sameAs": [
+          "https://www.instagram.com/slushify._/",
+          "https://www.tiktok.com/@slushify_y"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "orders",
+            "telephone": "+233509949405",
+            "url": "https://wa.me/233509949405"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "events and catering",
+            "telephone": "+233575978888",
+            "url": "https://wa.me/233575978888"
+          }
+        ],
+        "potentialAction": {
+          "@type": "OrderAction",
+          "target": "https://wa.me/233509949405"
+        },
+        "makesOffer": {
+          "@type": "Offer",
+          "name": "GHC 150 Combo + Slushy",
+          "description": "Burger, fries, sauce and any slushy",
+          "price": "150",
+          "priceCurrency": "GHS",
+          "url": "https://the-slushify.vercel.app/menu.html#combos"
+        },
+        "hasMenu": {
+          "@type": "Menu",
+          "url": "https://the-slushify.vercel.app/menu.html",
+          "name": "The Slushify Menu",
+          "hasMenuSection": [
+            {
+              "@type": "MenuSection",
+              "name": "Slushies & Mocktails",
+              "hasMenuItem": [
+                {
+                  "@type": "MenuItem",
+                  "name": "Smoke Red Slush",
+                  "description": "Strawberry and mint crown, served under frozen mist."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Citrus Red Freeze",
+                  "description": "Frozen red pour in a stem glass with a fresh orange wheel."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Lime Splash Red",
+                  "description": "Crushed red ice, poured to the brim, finished with lime."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Blue Cherry Ice",
+                  "description": "Electric blue slush crowned with a cherry."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Blue Lagoon Cup",
+                  "description": "Blue freeze in the Slushify cup with lemon and blueberries."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Red & Blue Duo",
+                  "description": "Two cups, two flavours — made for sharing."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Strawberry Daiquiri Freeze",
+                  "description": "Frozen strawberry in a salt-rimmed stem glass."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Double Strawberry Chill",
+                  "description": "Twin coupes with fresh strawberries and lime."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Sunset Cup",
+                  "description": "Pink-red freeze piled high with cherry and orange."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Pineapple Smoke Bowl",
+                  "description": "Served in a real pineapple with mist pouring over."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Cherry Horn",
+                  "description": "Bright red freeze in our signature horn glass."
+                }
+              ]
+            },
+            {
+              "@type": "MenuSection",
+              "name": "Burgers",
+              "hasMenuItem": [
+                {
+                  "@type": "MenuItem",
+                  "name": "Classic Cheeseburger",
+                  "description": "Beef patty, melted cheese, lettuce and tomato on a toasted bun."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Burger & Fries",
+                  "description": "Our cheeseburger with a side of golden fries."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Share Tray",
+                  "description": "Four cheeseburgers and fries — built for the table."
+                }
+              ]
+            },
+            {
+              "@type": "MenuSection",
+              "name": "Fries",
+              "hasMenuItem": [
+                {
+                  "@type": "MenuItem",
+                  "name": "Basket & Dips",
+                  "description": "Wire-basket fries with ketchup and house cream dip."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Red Carton Fries",
+                  "description": "The classic red carton, piled high."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Paper Bag Fries",
+                  "description": "Crisp fries with herbs and ketchup on the side."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Carton Fries",
+                  "description": "Overflowing white carton, crisp and salted."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Fry Basket",
+                  "description": "Golden fries in a paper-lined basket with ketchup."
+                }
+              ]
+            },
+            {
+              "@type": "MenuSection",
+              "name": "Combos",
+              "hasMenuItem": [
+                {
+                  "@type": "MenuItem",
+                  "name": "GHC 150 Combo + Slushy",
+                  "description": "Burger, fries, sauce and your pick of slushy.",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "150",
+                    "priceCurrency": "GHS"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Booth Combo",
+                  "description": "Burger, fry basket and a pink freeze at the booth.",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "150",
+                    "priceCurrency": "GHS"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Table for Two",
+                  "description": "Two full combos with fries, peppers and sauces."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Shake & Burger",
+                  "description": "Cheeseburger, fries and a tall topped shake."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Burger & Cola",
+                  "description": "Cheeseburger, fries, ketchup and an ice-cold cola."
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Garden Plate",
+                  "description": "Cheeseburger and fries with dip, served al fresco."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
