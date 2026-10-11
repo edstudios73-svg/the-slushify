@@ -36,8 +36,10 @@ const steps = [
 
 const categorySection = (cat, i) => {
   const items = menuItems.filter((m) => m.category === cat.id)
-  const light = i === 0
-  const cls = ['cat-section', `cat-section--${cat.frame}`, light ? 'light' : i % 2 ? 'is-alt' : '', i === 1 ? 'after-drip' : '']
+  // cream → dark → cream-2 → cream, with drips where the colour changes
+  const theme = ['light', 'is-alt', 'light light-2', 'light'][i] || 'light'
+  const flip = ['drip-cream', 'drip-black-2', '', ''][i]
+  const cls = ['cat-section', `cat-section--${cat.frame}`, theme, i === 1 || i === 2 ? 'after-drip' : '']
   return `
     <section class="${cls.filter(Boolean).join(' ')}" id="${cat.id}">
       <div class="container cat-head" data-reveal>
@@ -50,7 +52,7 @@ const categorySection = (cat, i) => {
         <a class="btn btn-sm btn-view" href="/menu.html#${cat.id}">View all</a>
       </div>
       ${carousel(items.map(dishCard), { label: cat.label, cls: `carousel--${cat.frame}` })}
-      ${light ? drip('drip-white drip-flip') : ''}
+      ${flip ? drip(`${flip} drip-flip`) : ''}
     </section>`
 }
 
@@ -58,7 +60,7 @@ document.querySelector('#app').innerHTML = `
   ${renderHeader({ active: 'home' })}
 
   <main id="main">
-    <section class="hero" id="hero">
+    <section class="hero light" id="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -117,7 +119,7 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
 
-    <section class="story" id="story">
+    <section class="story light light-2" id="story">
       <div class="container">
         <div class="story-grid">
           ${story
@@ -139,7 +141,7 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="menu-intro light section-drip" id="menu">
-      ${drip('drip-black')}
+      ${drip('drip-cream-2')}
       <div class="container" data-reveal>
         <p class="script">the</p>
         <h2 class="display display-xl">Menu</h2>
@@ -152,7 +154,7 @@ document.querySelector('#app').innerHTML = `
     ${categories.map(categorySection).join('')}
 
     <section class="promo section-drip" id="deal">
-      ${drip('drip-black-2')}
+      ${drip('drip-cream')}
       <div class="container promo-grid">
         <div class="promo-art" data-reveal>
           ${frameMarkup({ image: '/images/cats/combo_meal.jpg', alt: 'GHC 150 combo: burger, fries, sauce and a slushy', price: 'GHC 150' }, 'ticket')}
@@ -190,7 +192,7 @@ document.querySelector('#app').innerHTML = `
           )
           .join('')}
       </div>
-      ${drip('drip-white drip-flip')}
+      ${drip('drip-cream drip-flip')}
     </section>
 
     <section class="people after-drip" id="moments">
@@ -206,9 +208,10 @@ document.querySelector('#app').innerHTML = `
         moments.map((m, i) => `<div class="tilt" style="--r:${[-3, 2, -1.5, 2.5, -2, 1.5, -2.5, 2, -1][i % 9]}deg">${frameMarkup(m, 'polaroid')}</div>`),
         { label: 'Our people', cls: 'carousel--people', autoplay: true }
       )}
+      ${drip('drip-black-2 drip-flip')}
     </section>
 
-    <section class="visit" id="visit">
+    <section class="visit light after-drip" id="visit">
       <div class="container visit-grid">
         <div class="visit-art" data-reveal>
           ${rings('visit-rings')}

@@ -11,6 +11,9 @@
   --line: rgba(250, 250, 250, 0.14);
   --line-strong: rgba(250, 250, 250, 0.35);
   --red: #ff2718;
+  --cream: #f8ecdc;
+  --cream-2: #f1dcc3;
+  --ink: #1c100d;
   --red-deep: #c4180c;
 
   --display: 'Playfair Display', 'Didot', 'Bodoni 72', Georgia, serif;
@@ -173,16 +176,20 @@ figure {
   color: inherit;
 }
 
-/* Light sections flip the palette: white ground, black ink, red accents */
+/* Light sections: warm cream ground, deep ink, red accents */
 .light {
-  --muted: rgba(10, 10, 10, 0.62);
-  --line: rgba(10, 10, 10, 0.14);
-  --line-strong: rgba(10, 10, 10, 0.4);
-  --pill-bg: var(--black);
-  --pill-fg: var(--white);
-  --cup-edge: var(--black);
-  background: var(--white);
-  color: var(--black);
+  --muted: rgba(28, 16, 13, 0.68);
+  --line: rgba(28, 16, 13, 0.14);
+  --line-strong: rgba(28, 16, 13, 0.38);
+  --pill-bg: var(--ink);
+  --pill-fg: var(--cream);
+  --cup-edge: var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.light-2 {
+  background: var(--cream-2);
 }
 
 /* ———————————————————————————————— Drips */
@@ -214,6 +221,12 @@ figure {
 }
 .drip-white {
   color: var(--white);
+}
+.drip-cream {
+  color: var(--cream);
+}
+.drip-cream-2 {
+  color: var(--cream-2);
 }
 .drip-red {
   color: var(--red);
@@ -705,21 +718,36 @@ section:has(> .drip-flip) {
 
 .hero-rings {
   position: absolute;
-  width: min(100vw - 16px, 640px);
+  width: min(92vw, 580px);
   aspect-ratio: 1;
   opacity: 0.9;
   animation: spin 60s linear infinite;
 }
 
+/* The food sits in a true circle: cropped with object-fit, never stretched */
 .hero-art picture {
   position: relative;
-  width: 100%;
+  display: block;
+  width: min(74vw, 460px);
+  aspect-ratio: 1;
+  margin: 8% 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--black);
+  box-shadow: 14px 14px 0 var(--red), 0 30px 60px rgba(28, 16, 13, 0.35);
 }
 
 .hero-art img {
   width: 100%;
-  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%);
-  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 58%, transparent 100%);
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+  transform: scale(1.04);
+  transition: transform 1.2s var(--ease);
+}
+
+.hero-art:hover img {
+  transform: scale(1.1);
 }
 
 .hero-seal {
@@ -807,7 +835,11 @@ section:has(> .drip-flip) {
   }
 
   .hero-rings {
-    width: 96%;
+    width: min(96%, 600px);
+  }
+
+  .hero-art picture {
+    width: min(36vw, 470px);
   }
 
   .hero-seal {
@@ -2104,6 +2136,153 @@ section:has(> .drip-flip) {
 [data-reveal].is-visible {
   opacity: 1;
   translate: 0 0;
+}
+
+
+/* ———————————————————————————————— Cream theme overrides */
+body {
+  background: var(--cream);
+}
+
+.site-header {
+  color: var(--ink);
+}
+
+.site-header.scrolled,
+.nav-open .site-header {
+  background: rgba(248, 236, 220, 0.94);
+  box-shadow: 0 1px 0 rgba(28, 16, 13, 0.12);
+}
+
+.brand-word small,
+.menu-toggle {
+  color: var(--ink);
+}
+
+.nav-desktop a {
+  color: rgba(28, 16, 13, 0.7);
+}
+
+.nav-desktop a:hover,
+.nav-desktop a[aria-current='page'] {
+  color: var(--ink);
+}
+
+.nav-mobile {
+  background: var(--cream);
+  color: var(--ink);
+  --line: rgba(28, 16, 13, 0.14);
+  --muted: rgba(28, 16, 13, 0.68);
+}
+
+.hero.light,
+.page-hero.light {
+  background: var(--cream);
+}
+
+.light .hero-bg {
+  background:
+    linear-gradient(180deg, transparent 80%, var(--cream) 100%),
+    radial-gradient(ellipse 45% 55% at 74% 48%, rgba(255, 39, 24, 0.22), transparent 70%),
+    radial-gradient(circle at 1px 1px, rgba(28, 16, 13, 0.07) 1px, transparent 0) 0 0 / 22px 22px,
+    var(--cream);
+}
+
+.light .hero-title {
+  color: var(--ink);
+}
+
+.light .rings {
+  stroke: var(--ink);
+}
+
+.light .hero-seal {
+  box-shadow: 0 0 0 5px var(--cream), 0 0 0 7px var(--ink);
+}
+
+.light .hero-cats a {
+  color: var(--ink);
+}
+
+.light .hero-cats a:hover {
+  color: var(--red);
+}
+
+.light .btn-outline {
+  border-color: rgba(28, 16, 13, 0.4);
+  color: var(--ink);
+}
+
+.light .btn-outline:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.light .btn-view {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.light .display-outline {
+  color: var(--cream);
+  -webkit-text-stroke: 2px var(--ink);
+}
+
+.light .page-rings {
+  opacity: 0.25;
+}
+
+.light .filters {
+  background: rgba(248, 236, 220, 0.94);
+}
+
+.light .chip {
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.light .chip:hover {
+  border-color: var(--ink);
+}
+
+.light .chip[aria-pressed='true'] {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.light .vibe-sub a {
+  color: var(--ink);
+}
+
+.light .visit-list a:hover {
+  color: var(--red);
+}
+
+.light .story-card {
+  box-shadow: 10px 10px 0 var(--red);
+}
+
+.story-card figcaption {
+  color: var(--white);
+}
+
+.light .frame-polaroid {
+  box-shadow: 0 16px 36px rgba(28, 16, 13, 0.2);
+}
+
+.light .carousel-btn:hover {
+  color: var(--white);
+}
+
+.band {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.site-footer {
+  background: var(--ink);
 }
 
 /* ———————————————————————————————— Keyframes */

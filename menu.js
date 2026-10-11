@@ -20,7 +20,7 @@ document.querySelector('#app').innerHTML = `
   ${renderHeader({ active: 'menu' })}
 
   <main id="main" class="menu-page">
-    <section class="page-hero">
+    <section class="page-hero light">
       <div class="hero-bg" aria-hidden="true"></div>
       ${rings('page-rings')}
       <div class="container">
@@ -31,7 +31,7 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="promo promo--menu section-drip" id="combos">
-      ${drip('drip-black')}
+      ${drip('drip-cream')}
       <div class="container promo-grid">
         <div class="promo-art">
           ${frameMarkup({ image: '/images/cats/combo_meal_3.jpg', alt: 'GHC 150 combo with a pink slushy at the booth', price: 'GHC 150' }, 'ticket')}
@@ -46,7 +46,7 @@ document.querySelector('#app').innerHTML = `
       ${drip('drip-red drip-flip')}
     </section>
 
-    <section class="menu-board after-drip" id="menu-board">
+    <section class="menu-board light after-drip" id="menu-board">
       <div class="container">
         <div class="filters" role="group" aria-label="Filter menu">
           ${filters
