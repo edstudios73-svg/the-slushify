@@ -94,6 +94,14 @@ document.querySelectorAll('.filter-chip').forEach((chip) =>
 
 bindChrome()
 
+const hashFilter = location.hash.slice(1).toLowerCase()
+const hashChip = [...document.querySelectorAll('.filter-chip')].find(
+  (chip) => chip.dataset.filter.toLowerCase() === hashFilter
+)
+
 if (location.hash === '#combos') {
   document.getElementById('combos')?.scrollIntoView({ behavior: 'auto' })
+} else if (hashChip) {
+  hashChip.click()
+  document.querySelector('.menu-board')?.scrollIntoView({ behavior: 'auto' })
 }
