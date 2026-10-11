@@ -43,17 +43,17 @@ export const menuItems = [
   { id: 'slushy-6', name: 'Strawberry Daiquiri Freeze', category: 'slushies', note: 'Frozen strawberry in a salt-rimmed stem glass.', image: img('slushy_6.jpg') },
   { id: 'slushy-7', name: 'Double Strawberry Chill', category: 'slushies', note: 'Twin coupes with fresh strawberries and lime.', image: img('slushy_7.jpg') },
   { id: 'slushy-9', name: 'Sunset Cup', category: 'slushies', note: 'Pink-red freeze piled high with cherry and orange.', image: img('slushy_9.jpg') },
-  { id: 'slushy-10', name: 'Pineapple Smoke Bowl', category: 'slushies', note: 'Served in a real pineapple with mist pouring over.', image: img('slushy_10.jpg'), tag: 'Showstopper' },
+  { id: 'slushy-10', name: 'Pineapple Smoke Bowl', category: 'slushies', note: 'Served in a real pineapple with mist pouring over.', image: img('slushy_10.jpg'), tag: 'Wow' },
   { id: 'slushy-11', name: 'Cherry Horn', category: 'slushies', note: 'Bright red freeze in our signature horn glass.', image: img('slushy_11.jpg') },
 
   { id: 'burger-3', name: 'Classic Cheeseburger', category: 'burgers', note: 'Beef patty, melted cheese, lettuce and tomato on a toasted bun.', image: img('burger_3.jpg'), tag: 'Best seller' },
   { id: 'burger-1', name: 'Burger & Fries', category: 'burgers', note: 'Our cheeseburger with a side of golden fries.', image: img('burger_1.jpg') },
   { id: 'burger-4', name: 'Share Tray', category: 'burgers', note: 'Four cheeseburgers and fries — built for the table.', image: img('burger_4.jpg') },
 
-  { id: 'fries-3', name: 'Basket & Dips', category: 'fries', note: 'Wire-basket fries with ketchup and house cream dip.', image: img('fries_3.jpg') },
+  { id: 'fries-4', name: 'Basket & Dips', category: 'fries', note: 'Wire-basket fries with ketchup and house cream dip.', image: img('fries_4.jpg') },
+  { id: 'fries-3', name: 'Red Carton Fries', category: 'fries', note: 'The classic red carton, piled high.', image: img('fries_3.jpg') },
   { id: 'fries-1', name: 'Paper Bag Fries', category: 'fries', note: 'Crisp fries with herbs and ketchup on the side.', image: img('fries_1.jpg') },
-  { id: 'fries-2', name: 'Carton Fries', category: 'fries', note: 'Overflowing carton, crisp and salted.', image: img('fries_2.jpg') },
-  { id: 'fries-4', name: 'Red Scoop Fries', category: 'fries', note: 'The classic red carton, piled high.', image: img('fries_4.jpg') },
+  { id: 'fries-2', name: 'Carton Fries', category: 'fries', note: 'Overflowing white carton, crisp and salted.', image: img('fries_2.jpg') },
   { id: 'fries-5', name: 'Fry Basket', category: 'fries', note: 'Golden fries in a paper-lined basket with ketchup.', image: img('fries_5.jpg') },
 
   { id: 'combo-1', name: 'GHC 150 Combo + Slushy', category: 'combos', price: 'GHC 150', note: 'Burger, fries, sauce and your pick of slushy.', image: img('combo_meal.jpg'), tag: 'Deal' },
@@ -64,7 +64,7 @@ export const menuItems = [
   { id: 'combo-6', name: 'Garden Plate', category: 'combos', note: 'Cheeseburger and fries with dip, served al fresco.', image: img('combo_meal_6.jpg') },
 ]
 
-export const signatureIds = ['slushy-8', 'burger-3', 'slushy-10', 'combo-1', 'fries-3', 'slushy-7']
+export const signatureIds = ['slushy-8', 'burger-3', 'slushy-10', 'combo-1', 'fries-4', 'slushy-7']
 
 export const moments = [
   { image: img('slushy_moments_10.jpg'), alt: 'Guest in an AC/DC tee holding a Slushify cup' },
@@ -90,6 +90,12 @@ export const navLinks = [
 
 const arrow = '<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" /></svg>'
 export const arrowIcon = arrow
+
+/** Melting edge between sections — colour comes from `color` on the svg. */
+export const drip = (cls = '') =>
+  `<svg class="drip ${cls}" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 0H1440V24H1424Q1414 24 1414 34V84A14 14 0 0 1 1386 84V34Q1386 24 1376 24H1299Q1289 24 1289 34V53A17 17 0 0 1 1255 53V34Q1255 24 1245 24H1203Q1193 24 1193 34V81A17 17 0 0 1 1159 81V34Q1159 24 1149 24H1101Q1091 24 1091 34V87A11 11 0 0 1 1069 87V34Q1069 24 1059 24H989Q979 24 979 34V47A11 11 0 0 1 957 47V34Q957 24 947 24H915Q905 24 905 34V81A17 17 0 0 1 871 81V34Q871 24 861 24H787Q777 24 777 34V53A17 17 0 0 1 743 53V34Q743 24 733 24H707Q697 24 697 34V41A17 17 0 0 1 663 41V34Q663 24 653 24H621Q611 24 611 34V59A11 11 0 0 1 589 59V34Q589 24 579 24H531Q521 24 521 34V41A17 17 0 0 1 487 41V34Q487 24 477 24H400Q390 24 390 34V84A14 14 0 0 1 362 84V34Q362 24 352 24H307Q297 24 297 34V53A17 17 0 0 1 263 53V34Q263 24 253 24H192Q182 24 182 34V44A14 14 0 0 1 154 44V34Q154 24 144 24H112Q102 24 102 34V70A14 14 0 0 1 74 70V34Q74 24 64 24H0Z" fill="currentColor"/></svg>`
+
+export const burst = (text, cls = '') => `<span class="burst ${cls}"><span>${text}</span></span>`
 
 export function renderHeader({ active = 'home' } = {}) {
   const links = navLinks
@@ -125,8 +131,15 @@ const ttIcon = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><p
 
 export function renderFooter() {
   const year = new Date().getFullYear()
+  const band = Array.from({ length: 8 }, () => '<span>The Slushify</span><i>✦</i>').join('')
   return `
+  <div class="band" aria-hidden="true"><div class="band-track">${band}${band}</div></div>
   <footer class="site-footer">
+    <div class="container footer-cta">
+      <h2 class="retro">Hungry? <em>Thirsty?</em></h2>
+      <p>Send us your order on WhatsApp and we’ll have it ready.</p>
+      <a class="btn btn-mustard" href="${orderLink()}" target="_blank" rel="noreferrer">Order on WhatsApp ${arrow}</a>
+    </div>
     <div class="container footer-grid">
       <div class="footer-brand">
         <a class="brand" href="/index.html" aria-label="The Slushify — home">
@@ -168,12 +181,11 @@ export function menuCard(item) {
   <article class="dish" data-category="${item.category}">
     <div class="dish-media">
       <img src="${item.image}" alt="${item.name}" loading="lazy" decoding="async" />
-      ${item.tag ? `<span class="dish-tag">${item.tag}</span>` : ''}
+      ${item.price ? burst(item.price.replace('GHC ', 'GHC<br>'), 'dish-burst') : item.tag ? `<span class="dish-tag">${item.tag}</span>` : ''}
     </div>
     <div class="dish-body">
       <div class="dish-head">
         <h3>${item.name}</h3>
-        ${item.price ? `<span class="dish-price">${item.price}</span>` : ''}
       </div>
       <p>${item.note}</p>
       <a class="dish-order" href="${orderLink(item.name)}" target="_blank" rel="noreferrer">Order ${arrow}</a>

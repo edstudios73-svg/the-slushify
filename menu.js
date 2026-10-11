@@ -4,6 +4,8 @@ import {
   categories,
   menuItems,
   arrowIcon,
+  drip,
+  burst,
   renderHeader,
   renderFooter,
   menuCard,
@@ -17,28 +19,33 @@ document.querySelector('#app').innerHTML = `
 
   <main id="main" class="menu-page">
     <section class="page-hero">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container">
-        <p class="eyebrow">East Legon · Accra</p>
-        <h1>The Menu</h1>
+        <p class="pill">East Legon · Accra</p>
+        <h1 class="retro retro-light retro-xl">The Menu</h1>
         <p class="page-hero-lead">Slushies, burgers, fries and combos. Tap any item to order on WhatsApp.</p>
       </div>
     </section>
 
-    <section class="section section-flush" id="combos">
+    <section class="cream section-drip" id="combos">
+      ${drip('drip-choc')}
       <div class="container">
-        <div class="deal-banner">
-          <img src="/images/cats/combo_meal_3.jpg" alt="GHC 150 combo with a pink slushy at the booth" loading="lazy" decoding="async" />
-          <div class="deal-banner-copy">
-            <p class="eyebrow">The Deal</p>
-            <h2><span class="price">GHC 150</span> Combo + Slushy</h2>
-            <p>Burger, fries, sauce and your pick of slushy.</p>
-            <a class="btn btn-primary" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
+        <div class="deal-card" data-reveal>
+          <div class="deal-img">
+            <img src="/images/cats/combo_meal.jpg" alt="GHC 150 combo: burger, fries, sauce and a slushy" loading="lazy" decoding="async" />
+            ${burst('GHC<br>150', 'deal-burst')}
+          </div>
+          <div class="deal-copy">
+            <p class="deal-kicker">The deal is back</p>
+            <h2 class="retro retro-light">Combo + Slushy</h2>
+            <p>Burger, fries, sauce and your pick of any slushy.</p>
+            <a class="btn btn-mustard" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section menu-board" id="menu-board">
+    <section class="cream menu-board" id="menu-board">
       <div class="container">
         <div class="filters" role="group" aria-label="Filter menu">
           ${filters
