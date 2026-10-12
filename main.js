@@ -47,9 +47,11 @@ const buildFrames = {
 }
 
 const mix = (a, b, t) => a + (b - a) * t
+// Short holds and an overshoot so every move snaps into place
 const hold = (f) => {
-  const t = Math.min(1, Math.max(0, (f - 0.22) / 0.56))
-  return t * t * (3 - 2 * t)
+  const t = Math.min(1, Math.max(0, (f - 0.08) / 0.62))
+  const c = 1.9
+  return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2)
 }
 
 const bindBuild = () => {
@@ -70,10 +72,13 @@ const bindBuild = () => {
       const a = buildFrames[key][i]
       const b = buildFrames[key][i + 1]
       const [x, y, s, r, o] = a.map((v, n) => mix(v, b[n], e))
-      el.style.transform = `translate(${x}%, ${y}%) rotate(${r}deg) scale(${s})`
+      const punch = Math.sin(Math.PI * Math.min(1, Math.max(0, e)))
+      const spin = punch * (key === 'combo' || key === 'burger' ? 40 : -40)
+      el.style.transform = `translate(${x}%, ${y}%) rotate(${r + spin}deg) scale(${s + punch * 0.18})`
       el.style.opacity = o
       el.style.zIndex = Math.round(s * 10)
     }
+    track.style.setProperty('--p', p.toFixed(3))
     const now = Math.round(t)
     if (now !== on) {
       on = now
@@ -246,6 +251,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <ol class="build-dots" aria-hidden="true">${buildScenes.map((_, i) => `<li${i === 0 ? ' class="is-on"' : ''}></li>`).join('')}</ol>
           <p class="build-hint" aria-hidden="true">Scroll</p>
+          <p class="build-ghost" aria-hidden="true"><span>Pour</span><span>Stack</span><span>Crunch</span><span>Combo</span></p>
         </div>
       </div>
       ${drip('drip-black-2 drip-flip')}
