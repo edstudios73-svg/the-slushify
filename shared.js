@@ -25,7 +25,7 @@ export const eventLink = wa(
 
 const img = (file) => `/images/cats/${file}`
 
-const menuImg = (file) => `/images/menu/${file}`
+const hd = (file) => `/images/hd/${file}.webp`
 
 /* ———————————————————————————————— The real Slushify menu */
 export const menu = [
@@ -37,11 +37,11 @@ export const menu = [
     script: 'house pours',
     blurb: 'Our signature slushies. Want it spiked? Any slushy with alcohol is GHC 80.',
     items: [
-      { name: 'Red Passion', desc: 'Mixed fruit, grenadine syrup', price: 50, c1: '#e3242b', c2: '#ff8a80' },
-      { name: 'Blue Pill', desc: 'Passion, blue curaçao, soda', price: 50, c1: '#1565c0', c2: '#64b5f6' },
-      { name: 'Lemon Tease', desc: 'Fresh lemon, soda, passion', price: 50, c1: '#f9a825', c2: '#fff176' },
-      { name: 'Pink Antidote', desc: 'Cranberry, grenadine, lemon', price: 50, c1: '#d81b60', c2: '#f8bbd0' },
-      { name: 'Illusion', desc: 'Grape, Vimto, soda', price: 50, c1: '#6a1b9a', c2: '#ce93d8' },
+      { name: 'Red Passion', desc: 'Mixed fruit, grenadine syrup', price: 50, image: hd('slushy-8'), c1: '#e3242b', c2: '#ff8a80' },
+      { name: 'Blue Pill', desc: 'Passion, blue curaçao, soda', price: 50, image: hd('slushy-4'), c1: '#1565c0', c2: '#64b5f6' },
+      { name: 'Lemon Tease', desc: 'Fresh lemon, soda, passion', price: 50, image: hd('slushy-2'), c1: '#f9a825', c2: '#fff176' },
+      { name: 'Pink Antidote', desc: 'Cranberry, grenadine, lemon', price: 50, image: hd('slushy-9'), c1: '#d81b60', c2: '#f8bbd0' },
+      { name: 'Illusion', desc: 'Grape, Vimto, soda', price: 50, image: hd('slushy-5'), c1: '#6a1b9a', c2: '#ce93d8' },
     ],
   },
   {
@@ -52,11 +52,11 @@ export const menu = [
     script: 'pure fruit',
     blurb: 'Straight-up fruit flavours, frozen. With alcohol: GHC 80.',
     items: [
-      { name: 'Mango', desc: 'Sweet, sunny mango', price: 50, c1: '#f57c00', c2: '#ffd54f' },
-      { name: 'Grape', desc: 'Deep purple grape', price: 50, c1: '#4a148c', c2: '#b39ddb' },
-      { name: 'Watermelon', desc: 'Fresh watermelon', price: 50, c1: '#e53935', c2: '#a5d6a7' },
-      { name: 'Pineapple', desc: 'Tropical pineapple', price: 50, c1: '#f9a825', c2: '#fff59d' },
-      { name: 'Passion', desc: 'Tangy passion fruit', price: 50, c1: '#ef6c00', c2: '#ffcc80' },
+      { name: 'Mango', desc: 'Sweet, sunny mango', price: 50, image: hd('slushy-1'), c1: '#f57c00', c2: '#ffd54f' },
+      { name: 'Grape', desc: 'Deep purple grape', price: 50, image: hd('slushy-3'), c1: '#4a148c', c2: '#b39ddb' },
+      { name: 'Watermelon', desc: 'Fresh watermelon', price: 50, image: hd('slushy-6'), c1: '#e53935', c2: '#a5d6a7' },
+      { name: 'Pineapple', desc: 'Tropical pineapple', price: 50, image: hd('slushy-10'), c1: '#f9a825', c2: '#fff59d' },
+      { name: 'Passion', desc: 'Tangy passion fruit', price: 50, image: hd('slushy-11'), c1: '#ef6c00', c2: '#ffcc80' },
     ],
   },
   {
@@ -67,12 +67,12 @@ export const menu = [
     script: 'after dark',
     blurb: 'Mixed at the bar. 18+ only, please drink responsibly.',
     items: [
-      { name: 'Strawberry / Passion Fruit Mojito', desc: 'White rum, mint, lime juice, sugar and soda water', price: 80, glass: 'highball', c1: '#e3242b', c2: '#ff8a80', garnish: 'mint' },
-      { name: 'Mimosa', desc: 'Champagne and orange juice', price: 120, glass: 'flute', c1: '#f57c00', c2: '#ffcc80' },
-      { name: 'Sex on the Beach', desc: 'Vodka, peach schnapps, orange juice and cranberry juice', price: 120, glass: 'highball', c1: '#d84315', c2: '#ffb74d', garnish: 'orange' },
-      { name: 'Pornstar Martini', desc: 'Vodka, passion fruit liqueur, vanilla syrup, passion fruit purée, with a shot of Prosecco on the side', price: 120, glass: 'martini', c1: '#f9a825', c2: '#fff176' },
-      { name: 'Piña Colada', desc: 'Coconut syrup, pineapple, tequila', price: 120, glass: 'hurricane', c1: '#fbc02d', c2: '#fff8e1' },
-      { name: 'Passion / Strawberry Margarita', desc: 'Margarita syrup, tequila', price: 120, glass: 'margarita', c1: '#e53935', c2: '#ff8a80' },
+      { name: 'Strawberry / Passion Fruit Mojito', desc: 'White rum, mint, lime juice, sugar and soda water', price: 80, image: hd('slushy-7') },
+      { name: 'Mimosa', desc: 'Champagne and orange juice', price: 120, image: hd('slushy-1') },
+      { name: 'Sex on the Beach', desc: 'Vodka, peach schnapps, orange juice and cranberry juice', price: 120, image: hd('slushy-2') },
+      { name: 'Pornstar Martini', desc: 'Vodka, passion fruit liqueur, vanilla syrup, passion fruit purée, with a shot of Prosecco on the side', price: 120, image: hd('slushy-11') },
+      { name: 'Piña Colada', desc: 'Coconut syrup, pineapple, tequila', price: 120, image: hd('slushy-10') },
+      { name: 'Passion / Strawberry Margarita', desc: 'Margarita syrup, tequila', price: 120, image: hd('slushy-6') },
     ],
   },
   {
@@ -83,12 +83,12 @@ export const menu = [
     script: 'something to bite',
     blurb: 'Burgers, wings and crispy bites to go with your pour.',
     items: [
-      { name: 'Beef Burger', desc: 'Cheese, bacon (optional)', price: 80, image: img('burger_3.jpg') },
-      { name: 'Fried Chicken Wings', desc: 'Crispy wings with dip', price: 60, image: menuImg('wings.webp') },
-      { name: 'Nuggets (6 pieces)', desc: 'Golden chicken nuggets', price: 60, image: menuImg('nuggets.webp') },
-      { name: 'Turkey', desc: 'With pepper sauce', price: 100, image: menuImg('turkey.webp') },
-      { name: 'Fried Yam', desc: 'Crispy fried yam', price: 40, image: menuImg('fries-bag.webp') },
-      { name: 'Extra Fries', desc: 'A side of golden fries', price: 20, image: img('fries_3.jpg') },
+      { name: 'Beef Burger', desc: 'Cheese, bacon (optional)', price: 80, image: hd('burger-3') },
+      { name: 'Fried Chicken Wings', desc: 'Crispy wings with dip. Best with an Illusion.', price: 60, image: hd('slushy-5'), pair: true },
+      { name: 'Nuggets (6 pieces)', desc: 'Golden chicken nuggets. Best with a Blue Pill.', price: 60, image: hd('slushy-4'), pair: true },
+      { name: 'Turkey', desc: 'With pepper sauce. Best with a Pink Antidote.', price: 100, image: hd('slushy-9'), pair: true },
+      { name: 'Fried Yam', desc: 'Crispy fried yam', price: 40, image: hd('fries-1') },
+      { name: 'Extra Fries', desc: 'A side of golden fries', price: 20, image: hd('fries-3') },
     ],
   },
   {
@@ -99,9 +99,9 @@ export const menu = [
     script: 'best value',
     blurb: 'Full plates, one price.',
     items: [
-      { name: 'Combo Meal: Burger, Fries & Wings', desc: 'Beef burger, fries and fried chicken wings', price: 120, image: menuImg('wings.webp'), image2: img('burger_3.jpg') },
-      { name: 'Combo Meal: Fried Yam & Turkey', desc: 'Fried yam with turkey', price: 120, image: menuImg('turkey.webp'), image2: menuImg('fries-bag.webp') },
-      { name: 'Combo + Slushy Deal', desc: 'Burger, fries, sauce and any slushy', price: 150, image: img('combo_meal.jpg'), tag: 'Deal' },
+      { name: 'Combo Meal: Burger, Fries & Wings', desc: 'Beef burger, fries and fried chicken wings', price: 120, image: hd('combo-meal-5') },
+      { name: 'Combo Meal: Fried Yam & Turkey', desc: 'Fried yam with turkey', price: 120, image: hd('combo-meal-2') },
+      { name: 'Combo + Slushy Deal', desc: 'Burger, fries, sauce and any slushy', price: 150, image: hd('combo-meal'), tag: 'Deal' },
     ],
   },
 ]
@@ -200,78 +200,6 @@ export function frameMarkup(item, frame) {
   }
 }
 
-let svgUid = 0
-
-/** A Slushify cup: flavour-coloured ice dome, striped straw and the logo badge. */
-export function slushySvg({ c1, c2 }) {
-  const id = `sl${++svgUid}`
-  return `
-  <svg class="slushy-svg" viewBox="0 0 120 172" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c2}"/><stop offset="1" stop-color="${c1}"/></linearGradient>
-    </defs>
-    <g transform="rotate(14 74 40)">
-      <rect x="70" y="2" width="8" height="74" rx="4" fill="#fff"/>
-      <path d="M70 10h8M70 22h8M70 34h8M70 46h8" stroke="#ff2718" stroke-width="5"/>
-    </g>
-    <g fill="${c2}">
-      <circle cx="28" cy="58" r="13"/><circle cx="46" cy="44" r="16"/><circle cx="66" cy="40" r="17"/>
-      <circle cx="86" cy="47" r="15"/><circle cx="99" cy="58" r="11"/><rect x="18" y="52" width="86" height="14" rx="6"/>
-    </g>
-    <g fill="#fff" opacity=".75"><circle cx="40" cy="40" r="2.6"/><circle cx="60" cy="33" r="2"/><circle cx="80" cy="41" r="2.4"/><circle cx="30" cy="54" r="1.8"/><circle cx="93" cy="54" r="1.8"/></g>
-    <path d="M14 62h92l-10 98a8 8 0 0 1-8 7H32a8 8 0 0 1-8-7z" fill="url(#${id})"/>
-    <rect x="12" y="59" width="96" height="8" rx="4" fill="#fff" opacity=".85"/>
-    <path d="M24 72l7 86" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".28"/>
-    <circle cx="61" cy="112" r="19" fill="#111" stroke="#fff" stroke-width="2"/>
-    <circle cx="61" cy="112" r="14.5" fill="none" stroke="#fff" stroke-width=".8" stroke-dasharray="6 4"/>
-    <text x="61" y="119" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="21" fill="#ff2718">S</text>
-  </svg>`
-}
-
-/** Line-and-fill glassware for the cocktails. */
-export function glassSvg({ glass, c1, c2, garnish }) {
-  const id = `gl${++svgUid}`
-  const grad = `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c2}"/><stop offset="1" stop-color="${c1}"/></linearGradient></defs>`
-  const ink = 'stroke="#1c100d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"'
-  const shapes = {
-    martini: `
-      <path d="M18 30h84L60 82z" fill="url(#${id})"/>
-      <path d="M10 22h100L60 86z" fill="none" ${ink}/>
-      <path d="M60 86v52M38 146h44" fill="none" ${ink}/>
-      <circle cx="96" cy="24" r="13" fill="#f9a825" ${ink}/><circle cx="96" cy="24" r="8" fill="#fff3c4"/>
-      <g fill="#1c100d"><circle cx="93" cy="22" r="1.4"/><circle cx="99" cy="25" r="1.4"/><circle cx="95" cy="28" r="1.4"/></g>`,
-    margarita: `
-      <path d="M16 34h88q-4 30-44 34q-40-4-44-34z" fill="url(#${id})"/>
-      <path d="M10 26h100q-4 40-50 44q-46-4-50-44z" fill="none" ${ink}/>
-      <path d="M40 70q20 18 40 0" fill="none" ${ink}/>
-      <path d="M60 80v56M36 144h48" fill="none" ${ink}/>
-      <path d="M12 26h96" stroke="#fff" stroke-width="5" stroke-dasharray="2 4" stroke-linecap="round"/>
-      <circle cx="104" cy="24" r="15" fill="#c5e17a" ${ink}/><circle cx="104" cy="24" r="10" fill="#e6f5b0"/>
-      <path d="M104 14v20M94 24h20M97 17l14 14M111 17l-14 14" stroke="#9ccc65" stroke-width="1.6"/>`,
-    flute: `
-      <path d="M46 34h28l-3 58q-11 8-22 0z" fill="url(#${id})"/>
-      <path d="M42 12h36l-4 82q-14 10-28 0z" fill="none" ${ink}/>
-      <path d="M60 102v38M42 146h36" fill="none" ${ink}/>
-      <g fill="#fff" opacity=".8"><circle cx="54" cy="80" r="2"/><circle cx="62" cy="66" r="1.6"/><circle cx="57" cy="52" r="1.8"/><circle cx="65" cy="44" r="1.4"/></g>`,
-    highball: `
-      <path d="M34 46h52l-5 92H39z" fill="url(#${id})"/>
-      <path d="M28 26h64l-7 120H35z" fill="none" ${ink}/>
-      <g fill="#fff" opacity=".55"><rect x="42" y="58" width="16" height="16" rx="3" transform="rotate(-10 50 66)"/><rect x="62" y="76" width="15" height="15" rx="3" transform="rotate(12 70 84)"/><rect x="45" y="96" width="14" height="14" rx="3"/></g>
-      <path d="M70 6l-8 110" stroke="#ff2718" stroke-width="6" stroke-linecap="round"/>
-      ${garnish === 'mint'
-        ? '<g fill="#43a047" stroke="#1c100d" stroke-width="2"><ellipse cx="44" cy="40" rx="10" ry="5" transform="rotate(-30 44 40)"/><ellipse cx="56" cy="36" rx="10" ry="5" transform="rotate(20 56 36)"/></g><circle cx="86" cy="34" r="9" fill="#e53935" stroke="#1c100d" stroke-width="2"/>'
-        : '<circle cx="88" cy="30" r="15" fill="#ffb74d" stroke="#1c100d" stroke-width="2.5"/><circle cx="88" cy="30" r="10" fill="#ffe0b2"/><path d="M88 20v20M78 30h20" stroke="#ffb74d" stroke-width="1.6"/>'}`,
-    hurricane: `
-      <path d="M40 40q-4 26 8 40q-10 26 2 48h20q12-22 2-48q12-14 8-40z" fill="url(#${id})"/>
-      <path d="M36 18q-8 40 8 62q-12 30 2 54h28q14-24 2-54q16-22 8-62z" fill="none" ${ink}/>
-      <path d="M60 134v8M42 148h36" fill="none" ${ink}/>
-      <path d="M78 18l26-8-6 24z" fill="#fbc02d" stroke="#1c100d" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M100 12l6-12M104 14l12-6M98 10l-2-12" stroke="#43a047" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="46" cy="16" r="7" fill="#e53935" stroke="#1c100d" stroke-width="2"/><path d="M46 9q2-8 8-10" stroke="#1c100d" stroke-width="2" fill="none"/>`,
-  }
-  return `<svg class="glass-svg" viewBox="0 0 120 156" aria-hidden="true" focusable="false">${grad}${shapes[glass] || shapes.highball}</svg>`
-}
-
 const ghc = (price) => `<small>GHC</small><b>${price}</b>`
 
 /** Slushy frame: a dome-topped card tinted with the flavour. */
@@ -279,7 +207,7 @@ export function slushyCard(item) {
   return `
   <article class="slush" style="--c1:${item.c1};--c2:${item.c2}">
     <div class="slush-art">
-      ${slushySvg(item)}
+      <span class="slush-cup"><img src="${item.image}" alt="${item.name} slushy" loading="lazy" decoding="async" /></span>
       <span class="price-coin">${item.price}</span>
     </div>
     <h3 class="slush-name">${item.name}</h3>
@@ -290,11 +218,7 @@ export function slushyCard(item) {
 
 /** Coupon frame: cream ticket with a dashed cut line and a tear-off price stub. */
 export function couponCard(item, i = 0, label = '') {
-  const art = item.glass
-    ? `<span class="coupon-art coupon-art--glass" style="--c2:${item.c2}">${glassSvg(item)}</span>`
-    : item.image2
-      ? `<span class="coupon-art coupon-art--duo"><img src="${item.image}" alt="" loading="lazy" decoding="async" /><img src="${item.image2}" alt="" loading="lazy" decoding="async" /></span>`
-      : `<span class="coupon-art"><img src="${item.image}" alt="${item.name}" loading="lazy" decoding="async" /></span>`
+  const art = `<span class="coupon-art${item.pair ? ' coupon-art--pair' : ''}"><img src="${item.image}" alt="${item.pair ? `Slushy to pair with ${item.name}` : item.name}" loading="lazy" decoding="async" />${item.pair ? '<span class="pair-tag">+ slushy</span>' : ''}</span>`
   return `
   <article class="coupon">
     ${art}

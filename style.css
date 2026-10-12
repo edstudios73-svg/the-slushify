@@ -2718,6 +2718,81 @@ body {
   }
 }
 
+
+/* ———————————————————————————————— Real photos in the menu frames */
+.slush-art {
+  width: 80%;
+}
+
+.slush-cup {
+  display: block;
+  aspect-ratio: 3 / 4;
+  padding: 7px 7px 0;
+  background: var(--ink);
+  clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+  filter: drop-shadow(0 12px 14px rgba(28, 16, 13, 0.25));
+  transition: transform 0.5s var(--ease);
+}
+
+.slush-cup img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+  transition: transform 0.8s var(--ease);
+}
+
+.slush:hover .slush-cup {
+  transform: rotate(-3deg) translateY(-4px);
+}
+
+.slush:hover .slush-cup img {
+  transform: scale(1.06);
+}
+
+.slush .price-coin {
+  top: 12%;
+}
+
+.coupon {
+  grid-template-columns: 122px 1fr var(--stub);
+}
+
+.coupon-art {
+  padding: 14px 0 14px 14px;
+}
+
+.coupon-art img {
+  width: 100px;
+  height: 100px;
+}
+
+.pair-tag {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transform: translateX(-42%);
+}
+
+@media (max-width: 559px) {
+  .coupon {
+    grid-template-columns: 98px 1fr var(--stub);
+  }
+
+  .coupon-art img {
+    width: 78px;
+    height: 78px;
+  }
+}
+
 /* ———————————————————————————————— Keyframes */
 @keyframes rise {
   from {
