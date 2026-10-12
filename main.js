@@ -4,7 +4,8 @@ import {
   orderLink,
   eventLink,
   categories,
-  menuItems,
+  menuGroup,
+  menuCard,
   moments,
   space,
   arrowIcon,
@@ -12,7 +13,6 @@ import {
   icon,
   rings,
   frameMarkup,
-  dishCard,
   carousel,
   renderHeader,
   renderFooter,
@@ -29,17 +29,19 @@ const story = [
 ]
 
 const steps = [
-  { icon: 'cup', title: 'Pick', text: 'Slushy, burger, fries or a combo.' },
+  { icon: 'cup', title: 'Pick', text: 'Slushy, cocktail, burger or a combo.' },
   { icon: 'chat', title: 'Message', text: 'Send your order on WhatsApp.' },
   { icon: 'smile', title: 'Enjoy', text: 'Pick up or pull up a booth.' },
 ]
 
 const categorySection = (cat, i) => {
-  const items = menuItems.filter((m) => m.category === cat.id)
+  const groups = cat.groups.map(menuGroup)
+  const slides = groups.flatMap((g) => g.items.map((item, n) => menuCard(g, item, n)))
+  const kind = groups[0].kind
   // cream → dark → cream-2 → cream, with drips where the colour changes
   const theme = ['light', 'is-alt', 'light light-2', 'light'][i] || 'light'
   const flip = ['drip-cream', 'drip-black-2', '', ''][i]
-  const cls = ['cat-section', `cat-section--${cat.frame}`, theme, i === 1 || i === 2 ? 'after-drip' : '']
+  const cls = ['cat-section', `cat-section--${kind}`, theme, i === 1 || i === 2 ? 'after-drip' : '']
   return `
     <section class="${cls.filter(Boolean).join(' ')}" id="${cat.id}">
       <div class="container cat-head" data-reveal>
@@ -51,7 +53,7 @@ const categorySection = (cat, i) => {
         </div>
         <a class="btn btn-sm btn-view" href="/menu.html#${cat.id}">View all</a>
       </div>
-      ${carousel(items.map(dishCard), { label: cat.label, cls: `carousel--${cat.frame}` })}
+      ${carousel(slides, { label: cat.label, cls: `carousel--${kind}` })}
       ${flip ? drip(`${flip} drip-flip`) : ''}
     </section>`
 }
@@ -106,9 +108,9 @@ document.querySelector('#app').innerHTML = `
         </a>`
           )
           .join('')}
-        <a href="#slushies">
-          ${icon('martini')}
-          <span>Mocktails</span>
+        <a href="#food">
+          ${icon('fries')}
+          <span>Sides</span>
         </a>
       </nav>
     </section>

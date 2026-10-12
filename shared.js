@@ -25,48 +25,95 @@ export const eventLink = wa(
 
 const img = (file) => `/images/cats/${file}`
 
+const menuImg = (file) => `/images/menu/${file}`
+
+/* ———————————————————————————————— The real Slushify menu */
+export const menu = [
+  {
+    id: 'original',
+    group: 'slushies',
+    kind: 'slushy',
+    title: 'Slushify Original',
+    script: 'house pours',
+    blurb: 'Our signature slushies. Want it spiked? Any slushy with alcohol is GHC 80.',
+    items: [
+      { name: 'Red Passion', desc: 'Mixed fruit, grenadine syrup', price: 50, c1: '#e3242b', c2: '#ff8a80' },
+      { name: 'Blue Pill', desc: 'Passion, blue curaçao, soda', price: 50, c1: '#1565c0', c2: '#64b5f6' },
+      { name: 'Lemon Tease', desc: 'Fresh lemon, soda, passion', price: 50, c1: '#f9a825', c2: '#fff176' },
+      { name: 'Pink Antidote', desc: 'Cranberry, grenadine, lemon', price: 50, c1: '#d81b60', c2: '#f8bbd0' },
+      { name: 'Illusion', desc: 'Grape, Vimto, soda', price: 50, c1: '#6a1b9a', c2: '#ce93d8' },
+    ],
+  },
+  {
+    id: 'fruity',
+    group: 'slushies',
+    kind: 'slushy',
+    title: 'Slushify Fruity',
+    script: 'pure fruit',
+    blurb: 'Straight-up fruit flavours, frozen. With alcohol: GHC 80.',
+    items: [
+      { name: 'Mango', desc: 'Sweet, sunny mango', price: 50, c1: '#f57c00', c2: '#ffd54f' },
+      { name: 'Grape', desc: 'Deep purple grape', price: 50, c1: '#4a148c', c2: '#b39ddb' },
+      { name: 'Watermelon', desc: 'Fresh watermelon', price: 50, c1: '#e53935', c2: '#a5d6a7' },
+      { name: 'Pineapple', desc: 'Tropical pineapple', price: 50, c1: '#f9a825', c2: '#fff59d' },
+      { name: 'Passion', desc: 'Tangy passion fruit', price: 50, c1: '#ef6c00', c2: '#ffcc80' },
+    ],
+  },
+  {
+    id: 'cocktails',
+    group: 'cocktails',
+    kind: 'coupon',
+    title: 'Slushify Cocktails',
+    script: 'after dark',
+    blurb: 'Mixed at the bar. 18+ only, please drink responsibly.',
+    items: [
+      { name: 'Strawberry / Passion Fruit Mojito', desc: 'White rum, mint, lime juice, sugar and soda water', price: 80, glass: 'highball', c1: '#e3242b', c2: '#ff8a80', garnish: 'mint' },
+      { name: 'Mimosa', desc: 'Champagne and orange juice', price: 120, glass: 'flute', c1: '#f57c00', c2: '#ffcc80' },
+      { name: 'Sex on the Beach', desc: 'Vodka, peach schnapps, orange juice and cranberry juice', price: 120, glass: 'highball', c1: '#d84315', c2: '#ffb74d', garnish: 'orange' },
+      { name: 'Pornstar Martini', desc: 'Vodka, passion fruit liqueur, vanilla syrup, passion fruit purée, with a shot of Prosecco on the side', price: 120, glass: 'martini', c1: '#f9a825', c2: '#fff176' },
+      { name: 'Piña Colada', desc: 'Coconut syrup, pineapple, tequila', price: 120, glass: 'hurricane', c1: '#fbc02d', c2: '#fff8e1' },
+      { name: 'Passion / Strawberry Margarita', desc: 'Margarita syrup, tequila', price: 120, glass: 'margarita', c1: '#e53935', c2: '#ff8a80' },
+    ],
+  },
+  {
+    id: 'food',
+    group: 'food',
+    kind: 'coupon',
+    title: 'Slushify Sides',
+    script: 'something to bite',
+    blurb: 'Burgers, wings and crispy bites to go with your pour.',
+    items: [
+      { name: 'Beef Burger', desc: 'Cheese, bacon (optional)', price: 80, image: img('burger_3.jpg') },
+      { name: 'Fried Chicken Wings', desc: 'Crispy wings with dip', price: 60, image: menuImg('wings.webp') },
+      { name: 'Nuggets (6 pieces)', desc: 'Golden chicken nuggets', price: 60, image: menuImg('nuggets.webp') },
+      { name: 'Turkey', desc: 'With pepper sauce', price: 100, image: menuImg('turkey.webp') },
+      { name: 'Fried Yam', desc: 'Crispy fried yam', price: 40, image: menuImg('fries-bag.webp') },
+      { name: 'Extra Fries', desc: 'A side of golden fries', price: 20, image: img('fries_3.jpg') },
+    ],
+  },
+  {
+    id: 'combos',
+    group: 'combos',
+    kind: 'coupon',
+    title: 'Combo Meals',
+    script: 'best value',
+    blurb: 'Full plates, one price.',
+    items: [
+      { name: 'Combo Meal: Burger, Fries & Wings', desc: 'Beef burger, fries and fried chicken wings', price: 120, image: menuImg('wings.webp'), image2: img('burger_3.jpg') },
+      { name: 'Combo Meal: Fried Yam & Turkey', desc: 'Fried yam with turkey', price: 120, image: menuImg('turkey.webp'), image2: menuImg('fries-bag.webp') },
+      { name: 'Combo + Slushy Deal', desc: 'Burger, fries, sauce and any slushy', price: 150, image: img('combo_meal.jpg'), tag: 'Deal' },
+    ],
+  },
+]
+
 export const categories = [
-  { id: 'slushies', label: 'Slushies & Mocktails', short: 'Slushies', script: 'Pour', blurb: 'Frozen, smoking, poured to order.', image: img('slushy_8.jpg'), frame: 'cup', icon: 'cup' },
-  { id: 'burgers', label: 'Burgers', short: 'Burgers', script: 'Stack', blurb: 'Melty, stacked, classic.', image: img('burger_3.jpg'), frame: 'stamp', icon: 'burger' },
-  { id: 'fries', label: 'Fries', short: 'Fries', script: 'Crunch', blurb: 'Golden, crisp, salted.', image: img('fries_4.jpg'), frame: 'arch', icon: 'fries' },
-  { id: 'combos', label: 'Combos', short: 'Combos', script: 'Share', blurb: 'Burger, fries & a slushy.', image: img('combo_meal_3.jpg'), frame: 'ticket', icon: 'combo' },
+  { id: 'slushies', label: 'Slushies', short: 'Slushies', script: 'Pour', blurb: 'Original and fruity flavours from GHC 50. Spiked: GHC 80.', icon: 'cup', groups: ['original', 'fruity'] },
+  { id: 'cocktails', label: 'Cocktails', short: 'Cocktails', script: 'Shake', blurb: 'Mojitos, margaritas, martinis and more.', icon: 'martini', groups: ['cocktails'] },
+  { id: 'food', label: 'Burgers & Sides', short: 'Food', script: 'Stack', blurb: 'Burgers, wings, nuggets, turkey and fries.', icon: 'burger', groups: ['food'] },
+  { id: 'combos', label: 'Combo Meals', short: 'Combos', script: 'Share', blurb: 'Full plates from GHC 120.', icon: 'combo', groups: ['combos'] },
 ]
 
-export const categoryById = (id) => categories.find((c) => c.id === id)
-
-/** Menu — names describe what is in each photo. */
-export const menuItems = [
-  { id: 'slushy-8', name: 'Smoke Red Slush', category: 'slushies', note: 'Strawberry and mint crown, served under frozen mist.', image: img('slushy_8.jpg'), tag: 'Signature' },
-  { id: 'slushy-1', name: 'Citrus Red Freeze', category: 'slushies', note: 'Frozen red pour in a stem glass with a fresh orange wheel.', image: img('slushy_1.jpg') },
-  { id: 'slushy-2', name: 'Lime Splash Red', category: 'slushies', note: 'Crushed red ice, poured to the brim, finished with lime.', image: img('slushy_2.jpg') },
-  { id: 'slushy-3', name: 'Blue Cherry Ice', category: 'slushies', note: 'Electric blue slush crowned with a cherry.', image: img('slushy_3.jpg') },
-  { id: 'slushy-4', name: 'Blue Lagoon Cup', category: 'slushies', note: 'Blue freeze in the Slushify cup with lemon and blueberries.', image: img('slushy_4.jpg') },
-  { id: 'slushy-5', name: 'Red & Blue Duo', category: 'slushies', note: 'Two cups, two flavours — made for sharing.', image: img('slushy_5.jpg') },
-  { id: 'slushy-6', name: 'Strawberry Daiquiri Freeze', category: 'slushies', note: 'Frozen strawberry in a salt-rimmed stem glass.', image: img('slushy_6.jpg') },
-  { id: 'slushy-7', name: 'Double Strawberry Chill', category: 'slushies', note: 'Twin coupes with fresh strawberries and lime.', image: img('slushy_7.jpg') },
-  { id: 'slushy-9', name: 'Sunset Cup', category: 'slushies', note: 'Pink-red freeze piled high with cherry and orange.', image: img('slushy_9.jpg') },
-  { id: 'slushy-10', name: 'Pineapple Smoke Bowl', category: 'slushies', note: 'Served in a real pineapple with mist pouring over.', image: img('slushy_10.jpg'), tag: 'Wow' },
-  { id: 'slushy-11', name: 'Cherry Horn', category: 'slushies', note: 'Bright red freeze in our signature horn glass.', image: img('slushy_11.jpg') },
-
-  { id: 'burger-3', name: 'Classic Cheeseburger', category: 'burgers', note: 'Beef patty, melted cheese, lettuce and tomato on a toasted bun.', image: img('burger_3.jpg'), tag: 'Best seller' },
-  { id: 'burger-1', name: 'Burger & Fries', category: 'burgers', note: 'Our cheeseburger with a side of golden fries.', image: img('burger_1.jpg') },
-  { id: 'burger-4', name: 'Share Tray', category: 'burgers', note: 'Four cheeseburgers and fries — built for the table.', image: img('burger_4.jpg') },
-
-  { id: 'fries-4', name: 'Basket & Dips', category: 'fries', note: 'Wire-basket fries with ketchup and house cream dip.', image: img('fries_4.jpg') },
-  { id: 'fries-3', name: 'Red Carton Fries', category: 'fries', note: 'The classic red carton, piled high.', image: img('fries_3.jpg') },
-  { id: 'fries-1', name: 'Paper Bag Fries', category: 'fries', note: 'Crisp fries with herbs and ketchup on the side.', image: img('fries_1.jpg') },
-  { id: 'fries-2', name: 'Carton Fries', category: 'fries', note: 'Overflowing white carton, crisp and salted.', image: img('fries_2.jpg') },
-  { id: 'fries-5', name: 'Fry Basket', category: 'fries', note: 'Golden fries in a paper-lined basket with ketchup.', image: img('fries_5.jpg') },
-
-  { id: 'combo-1', name: 'GHC 150 Combo + Slushy', category: 'combos', price: 'GHC 150', note: 'Burger, fries, sauce and your pick of slushy.', image: img('combo_meal.jpg'), tag: 'Deal' },
-  { id: 'combo-3', name: 'Booth Combo', category: 'combos', price: 'GHC 150', note: 'Burger, fry basket and a pink freeze at the booth.', image: img('combo_meal_3.jpg') },
-  { id: 'combo-2', name: 'Table for Two', category: 'combos', note: 'Two full combos with fries, peppers and sauces.', image: img('combo_meal_2.jpg') },
-  { id: 'combo-4', name: 'Shake & Burger', category: 'combos', note: 'Cheeseburger, fries and a tall topped shake.', image: img('combo_meal_4.jpg') },
-  { id: 'combo-5', name: 'Burger & Cola', category: 'combos', note: 'Cheeseburger, fries, ketchup and an ice-cold cola.', image: img('combo_meal_5.jpg') },
-  { id: 'combo-6', name: 'Garden Plate', category: 'combos', note: 'Cheeseburger and fries with dip, served al fresco.', image: img('combo_meal_6.jpg') },
-]
-
-export const signatureIds = ['slushy-8', 'burger-3', 'slushy-10', 'combo-1', 'fries-4', 'slushy-7']
+export const menuGroup = (id) => menu.find((g) => g.id === id)
 
 export const moments = [
   { image: img('slushy_moments_10.jpg'), alt: 'Guest in an AC/DC tee holding a Slushify cup', caption: 'Peace & pours' },
@@ -153,17 +200,117 @@ export function frameMarkup(item, frame) {
   }
 }
 
-export function dishCard(item) {
-  const frame = categoryById(item.category)?.frame
+let svgUid = 0
+
+/** A Slushify cup: flavour-coloured ice dome, striped straw and the logo badge. */
+export function slushySvg({ c1, c2 }) {
+  const id = `sl${++svgUid}`
   return `
-  <article class="dish dish--${frame}" data-category="${item.category}">
-    ${frameMarkup(item, frame)}
-    <div class="dish-body">
+  <svg class="slushy-svg" viewBox="0 0 120 172" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c2}"/><stop offset="1" stop-color="${c1}"/></linearGradient>
+    </defs>
+    <g transform="rotate(14 74 40)">
+      <rect x="70" y="2" width="8" height="74" rx="4" fill="#fff"/>
+      <path d="M70 10h8M70 22h8M70 34h8M70 46h8" stroke="#ff2718" stroke-width="5"/>
+    </g>
+    <g fill="${c2}">
+      <circle cx="28" cy="58" r="13"/><circle cx="46" cy="44" r="16"/><circle cx="66" cy="40" r="17"/>
+      <circle cx="86" cy="47" r="15"/><circle cx="99" cy="58" r="11"/><rect x="18" y="52" width="86" height="14" rx="6"/>
+    </g>
+    <g fill="#fff" opacity=".75"><circle cx="40" cy="40" r="2.6"/><circle cx="60" cy="33" r="2"/><circle cx="80" cy="41" r="2.4"/><circle cx="30" cy="54" r="1.8"/><circle cx="93" cy="54" r="1.8"/></g>
+    <path d="M14 62h92l-10 98a8 8 0 0 1-8 7H32a8 8 0 0 1-8-7z" fill="url(#${id})"/>
+    <rect x="12" y="59" width="96" height="8" rx="4" fill="#fff" opacity=".85"/>
+    <path d="M24 72l7 86" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".28"/>
+    <circle cx="61" cy="112" r="19" fill="#111" stroke="#fff" stroke-width="2"/>
+    <circle cx="61" cy="112" r="14.5" fill="none" stroke="#fff" stroke-width=".8" stroke-dasharray="6 4"/>
+    <text x="61" y="119" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="21" fill="#ff2718">S</text>
+  </svg>`
+}
+
+/** Line-and-fill glassware for the cocktails. */
+export function glassSvg({ glass, c1, c2, garnish }) {
+  const id = `gl${++svgUid}`
+  const grad = `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c2}"/><stop offset="1" stop-color="${c1}"/></linearGradient></defs>`
+  const ink = 'stroke="#1c100d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"'
+  const shapes = {
+    martini: `
+      <path d="M18 30h84L60 82z" fill="url(#${id})"/>
+      <path d="M10 22h100L60 86z" fill="none" ${ink}/>
+      <path d="M60 86v52M38 146h44" fill="none" ${ink}/>
+      <circle cx="96" cy="24" r="13" fill="#f9a825" ${ink}/><circle cx="96" cy="24" r="8" fill="#fff3c4"/>
+      <g fill="#1c100d"><circle cx="93" cy="22" r="1.4"/><circle cx="99" cy="25" r="1.4"/><circle cx="95" cy="28" r="1.4"/></g>`,
+    margarita: `
+      <path d="M16 34h88q-4 30-44 34q-40-4-44-34z" fill="url(#${id})"/>
+      <path d="M10 26h100q-4 40-50 44q-46-4-50-44z" fill="none" ${ink}/>
+      <path d="M40 70q20 18 40 0" fill="none" ${ink}/>
+      <path d="M60 80v56M36 144h48" fill="none" ${ink}/>
+      <path d="M12 26h96" stroke="#fff" stroke-width="5" stroke-dasharray="2 4" stroke-linecap="round"/>
+      <circle cx="104" cy="24" r="15" fill="#c5e17a" ${ink}/><circle cx="104" cy="24" r="10" fill="#e6f5b0"/>
+      <path d="M104 14v20M94 24h20M97 17l14 14M111 17l-14 14" stroke="#9ccc65" stroke-width="1.6"/>`,
+    flute: `
+      <path d="M46 34h28l-3 58q-11 8-22 0z" fill="url(#${id})"/>
+      <path d="M42 12h36l-4 82q-14 10-28 0z" fill="none" ${ink}/>
+      <path d="M60 102v38M42 146h36" fill="none" ${ink}/>
+      <g fill="#fff" opacity=".8"><circle cx="54" cy="80" r="2"/><circle cx="62" cy="66" r="1.6"/><circle cx="57" cy="52" r="1.8"/><circle cx="65" cy="44" r="1.4"/></g>`,
+    highball: `
+      <path d="M34 46h52l-5 92H39z" fill="url(#${id})"/>
+      <path d="M28 26h64l-7 120H35z" fill="none" ${ink}/>
+      <g fill="#fff" opacity=".55"><rect x="42" y="58" width="16" height="16" rx="3" transform="rotate(-10 50 66)"/><rect x="62" y="76" width="15" height="15" rx="3" transform="rotate(12 70 84)"/><rect x="45" y="96" width="14" height="14" rx="3"/></g>
+      <path d="M70 6l-8 110" stroke="#ff2718" stroke-width="6" stroke-linecap="round"/>
+      ${garnish === 'mint'
+        ? '<g fill="#43a047" stroke="#1c100d" stroke-width="2"><ellipse cx="44" cy="40" rx="10" ry="5" transform="rotate(-30 44 40)"/><ellipse cx="56" cy="36" rx="10" ry="5" transform="rotate(20 56 36)"/></g><circle cx="86" cy="34" r="9" fill="#e53935" stroke="#1c100d" stroke-width="2"/>'
+        : '<circle cx="88" cy="30" r="15" fill="#ffb74d" stroke="#1c100d" stroke-width="2.5"/><circle cx="88" cy="30" r="10" fill="#ffe0b2"/><path d="M88 20v20M78 30h20" stroke="#ffb74d" stroke-width="1.6"/>'}`,
+    hurricane: `
+      <path d="M40 40q-4 26 8 40q-10 26 2 48h20q12-22 2-48q12-14 8-40z" fill="url(#${id})"/>
+      <path d="M36 18q-8 40 8 62q-12 30 2 54h28q14-24 2-54q16-22 8-62z" fill="none" ${ink}/>
+      <path d="M60 134v8M42 148h36" fill="none" ${ink}/>
+      <path d="M78 18l26-8-6 24z" fill="#fbc02d" stroke="#1c100d" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M100 12l6-12M104 14l12-6M98 10l-2-12" stroke="#43a047" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="46" cy="16" r="7" fill="#e53935" stroke="#1c100d" stroke-width="2"/><path d="M46 9q2-8 8-10" stroke="#1c100d" stroke-width="2" fill="none"/>`,
+  }
+  return `<svg class="glass-svg" viewBox="0 0 120 156" aria-hidden="true" focusable="false">${grad}${shapes[glass] || shapes.highball}</svg>`
+}
+
+const ghc = (price) => `<small>GHC</small><b>${price}</b>`
+
+/** Slushy frame: a dome-topped card tinted with the flavour. */
+export function slushyCard(item) {
+  return `
+  <article class="slush" style="--c1:${item.c1};--c2:${item.c2}">
+    <div class="slush-art">
+      ${slushySvg(item)}
+      <span class="price-coin">${item.price}</span>
+    </div>
+    <h3 class="slush-name">${item.name}</h3>
+    <p>${item.desc}</p>
+    <a class="dish-order" href="${orderLink(`a ${item.name} slushy`)}" target="_blank" rel="noreferrer">Order ${arrow}</a>
+  </article>`
+}
+
+/** Coupon frame: cream ticket with a dashed cut line and a tear-off price stub. */
+export function couponCard(item, i = 0, label = '') {
+  const art = item.glass
+    ? `<span class="coupon-art coupon-art--glass" style="--c2:${item.c2}">${glassSvg(item)}</span>`
+    : item.image2
+      ? `<span class="coupon-art coupon-art--duo"><img src="${item.image}" alt="" loading="lazy" decoding="async" /><img src="${item.image2}" alt="" loading="lazy" decoding="async" /></span>`
+      : `<span class="coupon-art"><img src="${item.image}" alt="${item.name}" loading="lazy" decoding="async" /></span>`
+  return `
+  <article class="coupon">
+    ${art}
+    <div class="coupon-body">
+      <span class="coupon-no">No. ${String(i + 1).padStart(2, '0')}${label ? ` · ${label}` : ''}${item.tag ? ` · <em>${item.tag}</em>` : ''}</span>
       <h3>${item.name}</h3>
-      <p>${item.note}</p>
+      <p>${item.desc}</p>
       <a class="dish-order" href="${orderLink(item.name)}" target="_blank" rel="noreferrer">Order ${arrow}</a>
     </div>
+    <div class="coupon-stub" aria-label="GHC ${item.price}">${ghc(item.price)}</div>
+    <span class="coupon-cut" aria-hidden="true">✂</span>
   </article>`
+}
+
+export function menuCard(group, item, i) {
+  return group.kind === 'slushy' ? slushyCard(item) : couponCard(item, i, group.title.replace('Slushify ', ''))
 }
 
 const chevron = (dir) =>
