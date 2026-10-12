@@ -3067,14 +3067,18 @@ body {
   transform: rotate(6deg);
 }
 
-.course-body > .container {
+.course-body {
   padding-top: calc(clamp(44px, 6vw, 92px) + 36px);
   padding-bottom: clamp(56px, 8vw, 88px);
 }
 
+.course-body .carousel-track {
+  padding-top: 22px;
+}
+
 .course-body .spiked-pill {
   display: inline-block;
-  margin-bottom: 26px;
+  margin-bottom: 4px;
 }
 
 @media (min-width: 900px) {

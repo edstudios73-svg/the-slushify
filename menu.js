@@ -9,6 +9,8 @@ import {
   rings,
   frameMarkup,
   menuCard,
+  carousel,
+  bindCarousels,
   renderHeader,
   renderFooter,
   bindChrome,
@@ -81,12 +83,12 @@ const courseSection = (g) => {
       </div>
       ${drip(`drip-${c.theme === 'cream' ? 'cream-2' : c.theme} drip-flip`)}
     </div>
-    <div class="course-body light"><div class="container">
-      ${g.kind === 'slushy' ? '<p class="spiked-pill"><b>GHC 50</b> classic · <b>GHC 80</b> with alcohol</p>' : ''}
-      <div class="${g.kind === 'slushy' ? 'slush-grid' : 'coupon-grid'}">
-        ${g.items.map((item, i) => menuCard(g, item, i)).join('')}
+    <div class="course-body light">
+      <div class="container">
+        ${g.kind === 'slushy' ? '<p class="spiked-pill"><b>GHC 50</b> classic · <b>GHC 80</b> with alcohol</p>' : ''}
       </div>
-    </div></div>
+      ${carousel(g.items.map((item, i) => menuCard(g, item, i)), { label: c.name, cls: `carousel--${g.kind}`, autoplay: true })}
+    </div>
   </section>`
 }
 
@@ -136,6 +138,7 @@ document.querySelector('#app').innerHTML = `
 `
 
 bindChrome()
+bindCarousels()
 
 // Highlight the tab for the section in view
 const tabs = [...document.querySelectorAll('[data-tab]')]
