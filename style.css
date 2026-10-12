@@ -2793,6 +2793,331 @@ body {
   }
 }
 
+
+/* ———————————————————————————————— Bill of fare */
+.bill {
+  padding: clamp(48px, 7vw, 88px) 0 clamp(24px, 4vw, 40px);
+}
+
+.bill-card {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 56px) clamp(22px, 5vw, 56px);
+  background: #fffaf1;
+  border: 2px solid var(--ink);
+  outline: 1.5px solid var(--ink);
+  outline-offset: -11px;
+  box-shadow: 12px 12px 0 var(--red);
+  text-align: center;
+}
+
+.bill-card::before,
+.bill-card::after {
+  content: '✦';
+  position: absolute;
+  top: 18px;
+  color: var(--red);
+  font-size: 16px;
+}
+
+.bill-card::before {
+  left: 22px;
+}
+
+.bill-card::after {
+  right: 22px;
+}
+
+.bill-est {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.bill-title {
+  margin-top: 8px;
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100, 'opsz' 144;
+  font-size: clamp(3rem, 9vw, 5.4rem);
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 var(--red);
+}
+
+.bill-title .script {
+  display: block;
+  margin-bottom: -0.1em;
+  color: var(--red);
+  font-size: 0.5em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.bill-sub {
+  margin: 14px auto 0;
+  max-width: 38ch;
+  color: var(--muted);
+}
+
+.bill-list {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
+  border-top: 1.5px solid var(--ink);
+  text-align: left;
+}
+
+.bill-list a {
+  display: grid;
+  grid-template-columns: 52px auto 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 18px 4px;
+  border-bottom: 1px dashed rgba(28, 16, 13, 0.3);
+  text-decoration: none;
+  transition: background 0.2s ease, padding 0.25s var(--ease);
+}
+
+.bill-list a:hover {
+  padding-left: 12px;
+  background: rgba(255, 39, 24, 0.06);
+}
+
+.bill-no {
+  color: var(--red);
+  font-family: var(--display);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.bill-name b {
+  display: block;
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
+  font-size: clamp(19px, 2.6vw, 24px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.bill-name small {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.bill-dots {
+  align-self: center;
+  height: 0;
+  border-bottom: 2px dotted rgba(28, 16, 13, 0.4);
+  min-width: 16px;
+}
+
+.bill-price {
+  font-family: var(--retro);
+  font-variation-settings: 'SOFT' 100;
+  font-size: 17px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.bill-foot {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.bill-foot b {
+  color: var(--red);
+}
+
+.tab-no {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 800;
+  color: var(--red);
+}
+
+.menu-tabs a.active .tab-no {
+  color: var(--cream);
+}
+
+/* ———————————————————————————————— Courses */
+.course {
+  padding: 0 !important;
+  background: var(--cream);
+  scroll-margin-top: calc(var(--header) + 60px);
+}
+
+.course-banner {
+  --bg: var(--red);
+  --fg: var(--white);
+  position: relative;
+  z-index: 2;
+  padding: clamp(56px, 8vw, 96px) 0 clamp(48px, 6vw, 72px);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.course--cream .course-banner {
+  --bg: var(--cream-2);
+  --fg: var(--ink);
+}
+
+.course--ink .course-banner {
+  --bg: var(--ink);
+  --fg: var(--cream);
+}
+
+.drip-ink {
+  color: var(--ink);
+}
+
+.course-banner-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px 24px;
+}
+
+.course-mark {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  width: 92px;
+  aspect-ratio: 1;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  outline: 1.5px dashed currentColor;
+  outline-offset: 5px;
+  line-height: 1;
+}
+
+.course-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.course-no {
+  margin-top: 4px;
+  font-family: var(--display);
+  font-size: 38px;
+  font-style: italic;
+  font-weight: 900;
+}
+
+.course-copy .script {
+  margin-bottom: -0.05em;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.course .course-copy .display {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  text-transform: uppercase;
+}
+
+.course--red .course-copy .display {
+  text-shadow: 4px 4px 0 var(--ink);
+}
+
+.course--ink .course-copy .display {
+  text-shadow: 4px 4px 0 var(--red);
+}
+
+.course-note {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.course .cat-blurb {
+  margin-top: 6px;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.course-photos {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+}
+
+.course-photos img {
+  width: min(40vw, 190px);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 6px solid #fffaf1;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+  transform: rotate(-5deg);
+}
+
+.course-photos img + img {
+  margin-left: -26px;
+  margin-top: 30px;
+  transform: rotate(6deg);
+}
+
+.course-body > .container {
+  padding-top: calc(clamp(44px, 6vw, 92px) + 36px);
+  padding-bottom: clamp(56px, 8vw, 88px);
+}
+
+.course-body .spiked-pill {
+  display: inline-block;
+  margin-bottom: 26px;
+}
+
+@media (min-width: 900px) {
+  .course-banner-inner {
+    grid-template-columns: auto 1fr auto;
+    gap: 40px;
+  }
+
+  .course-photos {
+    grid-column: auto;
+  }
+
+  .course-mark {
+    width: 120px;
+  }
+
+  .course-no {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 559px) {
+  .bill-list a {
+    grid-template-columns: 38px 1fr auto;
+  }
+
+  .bill-dots {
+    display: none;
+  }
+
+  .bill-no {
+    font-size: 22px;
+  }
+
+  .course-mark {
+    width: 72px;
+  }
+
+  .course-no {
+    font-size: 28px;
+  }
+}
+
 /* ———————————————————————————————— Keyframes */
 @keyframes rise {
   from {

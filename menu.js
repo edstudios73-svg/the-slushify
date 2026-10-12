@@ -14,23 +14,81 @@ import {
   bindChrome,
 } from './shared.js'
 
-const groupIcon = { original: 'cup', fruity: 'cup', cocktails: 'martini', food: 'burger', combos: 'combo' }
+/** Each menu group is served as a numbered course, like a classic bill of fare. */
+const courses = {
+  original: { no: 'I', name: 'The Pour', note: 'House slushies', banner: '/images/hd/slushy-8.webp', banner2: '/images/hd/slushy-4.webp', theme: 'red' },
+  fruity: { no: 'II', name: 'The Orchard', note: 'Pure fruit, frozen', banner: '/images/hd/slushy-1.webp', banner2: '/images/hd/slushy-10.webp', theme: 'cream' },
+  cocktails: { no: 'III', name: 'After Dark', note: 'Cocktails · 18+', banner: '/images/hd/slushy-6.webp', banner2: '/images/hd/slushy-11.webp', theme: 'ink' },
+  food: { no: 'IV', name: 'The Bite', note: 'Burgers & sides', banner: '/images/hd/burger-3.webp', banner2: '/images/hd/fries-3.webp', theme: 'cream' },
+  combos: { no: 'V', name: 'The Feast', note: 'Combo meals', banner: '/images/hd/combo-meal.webp', banner2: '/images/hd/combo-meal-5.webp', theme: 'red' },
+}
 
-const groupSection = (g) => `
-  <section class="menu-group menu-group--${g.kind}" id="${g.id}" aria-labelledby="${g.id}-title">
-    <header class="menu-group-head" data-reveal>
-      <span class="cat-icon">${icon(groupIcon[g.id])}</span>
-      <div>
-        <p class="script">${g.script}</p>
-        <h2 class="display" id="${g.id}-title">${g.title}</h2>
-        <p class="cat-blurb">${g.blurb}</p>
+const priceRange = (g) => {
+  const p = g.items.map((i) => i.price)
+  const lo = Math.min(...p)
+  const hi = Math.max(...p)
+  return lo === hi ? `GHC ${lo}` : `GHC ${lo}–${hi}`
+}
+
+const billOfFare = `
+  <section class="bill light" aria-labelledby="bill-title">
+    <div class="container">
+      <div class="bill-card" data-reveal>
+        <p class="bill-est">Est. 2023 · East Legon, Accra</p>
+        <h2 class="bill-title" id="bill-title"><span class="script">bill of</span> Fare</h2>
+        <p class="bill-sub">Five courses, from the first pour to the full feast.</p>
+        <ol class="bill-list">
+          ${menu
+            .map((g) => {
+              const c = courses[g.id]
+              return `
+          <li>
+            <a href="#${g.id}">
+              <span class="bill-no">${c.no}</span>
+              <span class="bill-name"><b>${c.name}</b><small>${g.title.replace('Slushify ', '')} · ${g.items.length} items</small></span>
+              <span class="bill-dots" aria-hidden="true"></span>
+              <span class="bill-price">${priceRange(g)}</span>
+            </a>
+          </li>`
+            })
+            .join('')}
+        </ol>
+        <p class="bill-foot">Any slushy with alcohol <b>GHC 80</b> · Order on WhatsApp <b>+233 50 994 9405</b></p>
       </div>
-      ${g.kind === 'slushy' ? '<span class="spiked-pill"><b>GHC 50</b> classic · <b>GHC 80</b> with alcohol</span>' : ''}
-    </header>
-    <div class="${g.kind === 'slushy' ? 'slush-grid' : 'coupon-grid'}">
-      ${g.items.map((item, i) => menuCard(g, item, i)).join('')}
     </div>
   </section>`
+
+const courseSection = (g) => {
+  const c = courses[g.id]
+  return `
+  <section class="course course--${c.theme} menu-group menu-group--${g.kind}" id="${g.id}" aria-labelledby="${g.id}-title">
+    <div class="course-banner">
+      <div class="container course-banner-inner">
+        <div class="course-mark" data-reveal>
+          <span class="course-label">Course</span>
+          <span class="course-no">${c.no}</span>
+        </div>
+        <div class="course-copy" data-reveal>
+          <p class="script">${g.script}</p>
+          <h2 class="display" id="${g.id}-title">${c.name}</h2>
+          <p class="course-note">${c.note} · <b>${priceRange(g)}</b></p>
+          <p class="cat-blurb">${g.blurb}</p>
+        </div>
+        <div class="course-photos" aria-hidden="true" data-reveal>
+          <img src="${c.banner}" alt="" loading="lazy" decoding="async" />
+          <img src="${c.banner2}" alt="" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      ${drip(`drip-${c.theme === 'cream' ? 'cream-2' : c.theme} drip-flip`)}
+    </div>
+    <div class="course-body light"><div class="container">
+      ${g.kind === 'slushy' ? '<p class="spiked-pill"><b>GHC 50</b> classic · <b>GHC 80</b> with alcohol</p>' : ''}
+      <div class="${g.kind === 'slushy' ? 'slush-grid' : 'coupon-grid'}">
+        ${g.items.map((item, i) => menuCard(g, item, i)).join('')}
+      </div>
+    </div></div>
+  </section>`
+}
 
 document.querySelector('#app').innerHTML = `
   ${renderHeader({ active: 'menu' })}
@@ -48,14 +106,14 @@ document.querySelector('#app').innerHTML = `
 
     <nav class="menu-tabs light" aria-label="Menu sections">
       <div class="menu-tabs-track">
-        ${menu.map((g) => `<a href="#${g.id}" data-tab="${g.id}">${icon(groupIcon[g.id], 'icon icon-sm')} ${g.title.replace('Slushify ', '')}</a>`).join('')}
+        ${menu.map((g) => `<a href="#${g.id}" data-tab="${g.id}"><span class="tab-no">${courses[g.id].no}</span> ${courses[g.id].name}</a>`).join('')}
       </div>
     </nav>
 
-    <div class="menu-board light">
-      <div class="container">
-        ${menu.map(groupSection).join('')}
-      </div>
+    ${billOfFare}
+
+    <div class="courses">
+      ${menu.map(courseSection).join('')}
     </div>
 
     <section class="promo promo--menu section-drip" id="deal">
