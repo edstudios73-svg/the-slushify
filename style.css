@@ -42,6 +42,8 @@
 }
 
 html {
+  overflow-x: clip;
+  overscroll-behavior-x: none;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header) + 12px);
   scroll-behavior: smooth;
@@ -57,6 +59,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  touch-action: pan-y pinch-zoom;
 }
 
 body.nav-open {
@@ -3426,6 +3429,46 @@ body {
 .order-bar span {
   font-size: 12px;
   opacity: 0.7;
+}
+
+/* ---------- Fit every screen, no sideways wobble ---------- */
+.hero,
+.page-hero,
+.visit,
+.story,
+.people,
+.promo {
+  overflow-x: clip;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+}
+
+@media (max-width: 899px) {
+  .hero-grid {
+    gap: 18px;
+  }
+
+  .hero-title {
+    font-size: clamp(40px, 12.5vw, 64px);
+  }
+
+  .hero-art picture {
+    width: min(64vw, 38svh, 460px);
+  }
+}
+
+@media (max-width: 380px) {
+  .btn {
+    padding-inline: 18px;
+  }
+
+  .container {
+    padding-inline: 14px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
