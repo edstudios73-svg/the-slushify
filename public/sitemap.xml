@@ -10,6 +10,6 @@
     <loc>https://the-slushify.vercel.app/menu.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image><image:loc>https://the-slushify.vercel.app/og-menu.jpg</image:loc></image:image>
+    <image:image><image:loc>https://the-slushify.vercel.app/og-menu-bill.jpg</image:loc></image:image>
   </url>
 </urlset>
