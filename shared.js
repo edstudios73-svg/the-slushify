@@ -100,8 +100,7 @@ export const menu = [
     blurb: 'Full plates, one price.',
     items: [
       { name: 'Combo Meal: Burger, Fries & Wings', desc: 'Beef burger, fries and fried chicken wings', price: 120, image: hd('combo-meal-5') },
-      { name: 'Combo Meal: Fried Yam & Turkey', desc: 'Fried yam with turkey', price: 120, image: hd('combo-meal-2') },
-      { name: 'Combo + Slushy Deal', desc: 'Burger, fries, sauce and any slushy', price: 150, image: hd('combo-meal'), tag: 'Deal' },
+      { name: 'Combo Meal: Fried Yam & Turkey', desc: 'Fried yam with turkey', price: 120, image: hd('combo-meal-6') },
     ],
   },
 ]
@@ -359,7 +358,7 @@ export function renderFooter() {
       <div class="footer-col">
         <h3>Explore</h3>
         <a href="/menu.html">Menu</a>
-        <a href="/menu.html#combos">GHC 150 Combo</a>
+        <a href="/menu.html#combos">Combo Meals · GHC 120</a>
         <a href="/index.html#story">Our Story</a>
         <a href="/index.html#visit">Visit</a>
       </div>

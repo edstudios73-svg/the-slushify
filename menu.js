@@ -22,7 +22,7 @@ const courses = {
   fruity: { no: 'II', name: 'The Orchard', note: 'Pure fruit, frozen', banner: '/images/hd/slushy-1.webp', banner2: '/images/hd/slushy-10.webp', theme: 'cream' },
   cocktails: { no: 'III', name: 'After Dark', note: 'Cocktails · 18+', banner: '/images/hd/slushy-6.webp', banner2: '/images/hd/slushy-11.webp', theme: 'ink' },
   food: { no: 'IV', name: 'The Bite', note: 'Burgers & sides', banner: '/images/hd/burger-3.webp', banner2: '/images/hd/fries-3.webp', theme: 'cream' },
-  combos: { no: 'V', name: 'The Feast', note: 'Combo meals', banner: '/images/hd/combo-meal.webp', banner2: '/images/hd/combo-meal-5.webp', theme: 'red' },
+  combos: { no: 'V', name: 'The Feast', note: 'Combo meals', banner: '/images/hd/combo-meal-6.webp', banner2: '/images/hd/combo-meal-5.webp', theme: 'red' },
 }
 
 const priceRange = (g) => {
@@ -122,13 +122,13 @@ document.querySelector('#app').innerHTML = `
       ${drip('drip-cream')}
       <div class="container promo-grid">
         <div class="promo-art">
-          ${frameMarkup({ image: '/images/cats/combo_meal_3.jpg', alt: 'Combo with a pink slushy at the booth', price: 'GHC 150' }, 'ticket')}
+          ${frameMarkup({ image: '/images/hd/combo-meal-6.webp', alt: 'Combo meal: burger and fries', price: 'GHC 120' }, 'ticket')}
         </div>
         <div class="promo-copy">
-          <p class="script">the deal is back</p>
-          <h2 class="display">Combo + Slushy</h2>
-          <p class="promo-price"><span>GHC</span>150</p>
-          <a class="btn btn-white" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the deal ${arrowIcon}</a>
+          <p class="script">best value</p>
+          <h2 class="display">Combo Meal</h2>
+          <p class="promo-price"><span>GHC</span>120</p>
+          <a class="btn btn-white" href="${orderLink('a Combo Meal')}" target="_blank" rel="noreferrer">Order a combo meal ${arrowIcon}</a>
         </div>
       </div>
     </section>

@@ -92,8 +92,8 @@ document.querySelector('#app').innerHTML = `
               decoding="async"
             />
           </picture>
-          <a class="hero-seal" href="/menu.html#combos" aria-label="GHC 150 combo deal">
-            <span>GHC</span><b>150</b><span>Combo</span>
+          <a class="hero-seal" href="/menu.html#combos" aria-label="Combo meal GHC 120">
+            <span>GHC</span><b>120</b><span>Combo</span>
           </a>
         </figure>
       </div>
@@ -159,18 +159,18 @@ document.querySelector('#app').innerHTML = `
       ${drip('drip-cream')}
       <div class="container promo-grid">
         <div class="promo-art" data-reveal>
-          ${frameMarkup({ image: '/images/cats/combo_meal.jpg', alt: 'GHC 150 combo: burger, fries, sauce and a slushy', price: 'GHC 150' }, 'ticket')}
+          ${frameMarkup({ image: '/images/hd/combo-meal-5.webp', alt: 'Combo meal: beef burger, fries and a cold cola', price: 'GHC 120' }, 'ticket')}
         </div>
         <div class="promo-copy" data-reveal>
-          <p class="script">the deal is back</p>
-          <h2 class="display">Combo + Slushy</h2>
-          <p class="promo-price"><span>GHC</span>150</p>
+          <p class="script">best value</p>
+          <h2 class="display">Combo Meal</h2>
+          <p class="promo-price"><span>GHC</span>120</p>
           <ul class="promo-list">
             <li>${icon('burger', 'icon icon-sm')} Burger</li>
-            <li>${icon('fries', 'icon icon-sm')} Fries &amp; sauce</li>
-            <li>${icon('cup', 'icon icon-sm')} Any slushy</li>
+            <li>${icon('fries', 'icon icon-sm')} Fries</li>
+            <li>${icon('combo', 'icon icon-sm')} Wings</li>
           </ul>
-          <a class="btn btn-white" href="${orderLink('the GHC 150 Combo + Slushy')}" target="_blank" rel="noreferrer">Order the combo ${arrowIcon}</a>
+          <a class="btn btn-white" href="${orderLink('a Combo Meal')}" target="_blank" rel="noreferrer">Order a combo meal ${arrowIcon}</a>
         </div>
       </div>
       ${drip('drip-red drip-flip')}
