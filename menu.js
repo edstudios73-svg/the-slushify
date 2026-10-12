@@ -18,11 +18,11 @@ import {
 
 /** Each menu group is served as a numbered course, like a classic bill of fare. */
 const courses = {
-  original: { no: 'I', name: 'The Pour', note: 'House slushies', banner: '/images/hd/slushy-8.webp', banner2: '/images/hd/slushy-4.webp', theme: 'red' },
-  fruity: { no: 'II', name: 'The Orchard', note: 'Pure fruit, frozen', banner: '/images/hd/slushy-1.webp', banner2: '/images/hd/slushy-10.webp', theme: 'cream' },
-  cocktails: { no: 'III', name: 'After Dark', note: 'Cocktails · 18+', banner: '/images/hd/slushy-6.webp', banner2: '/images/hd/slushy-11.webp', theme: 'ink' },
-  food: { no: 'IV', name: 'The Bite', note: 'Burgers & sides', banner: '/images/hd/burger-3.webp', banner2: '/images/hd/fries-3.webp', theme: 'cream' },
-  combos: { no: 'V', name: 'The Feast', note: 'Combo meals', banner: '/images/hd/combo-meal-6.webp', banner2: '/images/hd/combo-meal-5.webp', theme: 'red' },
+  original: { no: 'I', name: 'Original Slushies', note: 'Signature flavours', banner: '/images/hd/slushy-8.webp', banner2: '/images/hd/slushy-4.webp', theme: 'red' },
+  fruity: { no: 'II', name: 'Fruity Slushies', note: 'Pure fruit flavours', banner: '/images/hd/slushy-1.webp', banner2: '/images/hd/slushy-10.webp', theme: 'cream' },
+  cocktails: { no: 'III', name: 'Cocktails', note: 'Mixed at the bar · 18+', banner: '/images/hd/slushy-6.webp', banner2: '/images/hd/slushy-11.webp', theme: 'ink' },
+  food: { no: 'IV', name: 'Burgers & Sides', note: 'Mains and sides', banner: '/images/hd/burger-3.webp', banner2: '/images/hd/fries-3.webp', theme: 'cream' },
+  combos: { no: 'V', name: 'Combo Meals', note: 'Full plates', banner: '/images/hd/combo-meal-6.webp', banner2: '/images/hd/combo-meal-5.webp', theme: 'red' },
 }
 
 const priceRange = (g) => {
@@ -38,7 +38,7 @@ const billOfFare = `
       <div class="bill-card" data-reveal>
         <p class="bill-est">Est. 2023 · East Legon, Accra</p>
         <h2 class="bill-title" id="bill-title"><span class="script">bill of</span> Fare</h2>
-        <p class="bill-sub">Five courses, from the first pour to the full feast.</p>
+        <p class="bill-sub">Five sections, from the first slushy to the full combo meal.</p>
         <ol class="bill-list">
           ${menu
             .map((g) => {
@@ -47,7 +47,7 @@ const billOfFare = `
           <li>
             <a href="#${g.id}">
               <span class="bill-no">${c.no}</span>
-              <span class="bill-name"><b>${c.name}</b><small>${g.title.replace('Slushify ', '')} · ${g.items.length} items</small></span>
+              <span class="bill-name"><b>${c.name}</b><small>${g.items.length} items</small></span>
               <span class="bill-dots" aria-hidden="true"></span>
               <span class="bill-price">${priceRange(g)}</span>
             </a>

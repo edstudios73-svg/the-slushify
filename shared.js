@@ -33,8 +33,8 @@ export const menu = [
     id: 'original',
     group: 'slushies',
     kind: 'slushy',
-    title: 'Slushify Original',
-    script: 'house pours',
+    title: 'Original Slushies',
+    script: 'our signature',
     blurb: 'Our signature slushies. Want it spiked? Any slushy with alcohol is GHC 80.',
     items: [
       { name: 'Red Passion', desc: 'Mixed fruit, grenadine syrup', price: 50, image: hd('slushy-8'), c1: '#e3242b', c2: '#ff8a80' },
@@ -48,8 +48,8 @@ export const menu = [
     id: 'fruity',
     group: 'slushies',
     kind: 'slushy',
-    title: 'Slushify Fruity',
-    script: 'pure fruit',
+    title: 'Fruity Slushies',
+    script: 'fresh and fruity',
     blurb: 'Straight-up fruit flavours, frozen. With alcohol: GHC 80.',
     items: [
       { name: 'Mango', desc: 'Sweet, sunny mango', price: 50, image: hd('slushy-1'), c1: '#f57c00', c2: '#ffd54f' },
@@ -63,8 +63,8 @@ export const menu = [
     id: 'cocktails',
     group: 'cocktails',
     kind: 'coupon',
-    title: 'Slushify Cocktails',
-    script: 'after dark',
+    title: 'Cocktails',
+    script: 'shaken and stirred',
     blurb: 'Mixed at the bar. 18+ only, please drink responsibly.',
     items: [
       { name: 'Strawberry / Passion Fruit Mojito', desc: 'White rum, mint, lime juice, sugar and soda water', price: 80, image: hd('slushy-7') },
@@ -79,8 +79,8 @@ export const menu = [
     id: 'food',
     group: 'food',
     kind: 'coupon',
-    title: 'Slushify Sides',
-    script: 'something to bite',
+    title: 'Burgers & Sides',
+    script: 'hot and crispy',
     blurb: 'Burgers, wings and crispy bites to go with your pour.',
     items: [
       { name: 'Beef Burger', desc: 'Cheese, bacon (optional)', price: 80, image: hd('burger-3') },
@@ -96,7 +96,7 @@ export const menu = [
     group: 'combos',
     kind: 'coupon',
     title: 'Combo Meals',
-    script: 'best value',
+    script: 'full plates',
     blurb: 'Full plates, one price.',
     items: [
       { name: 'Combo Meal: Burger, Fries & Wings', desc: 'Beef burger, fries and fried chicken wings', price: 120, image: hd('combo-meal-5') },
@@ -233,7 +233,7 @@ export function couponCard(item, i = 0, label = '') {
 }
 
 export function menuCard(group, item, i) {
-  return group.kind === 'slushy' ? slushyCard(item) : couponCard(item, i, group.title.replace('Slushify ', ''))
+  return group.kind === 'slushy' ? slushyCard(item) : couponCard(item, i, group.title)
 }
 
 const chevron = (dir) =>
