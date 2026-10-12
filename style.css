@@ -3163,6 +3163,251 @@ body {
   }
 }
 
+/* ---------- Scroll-driven build (pinned, photos fly in and out) ---------- */
+.build {
+  position: relative;
+  overflow-x: clip;
+  background: var(--black-2);
+  color: var(--cream);
+}
+
+.build-track {
+  position: relative;
+  height: 520vh;
+}
+
+.build-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+}
+
+.build-rings {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(120vw, 900px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  opacity: 0.18;
+  color: var(--red);
+  animation: spin 80s linear infinite;
+  pointer-events: none;
+}
+
+.build-discs {
+  position: absolute;
+  inset: 0 0 34% 0;
+  --bd: min(62vw, 36svh);
+}
+
+.bd {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--bd);
+  aspect-ratio: 1;
+  margin: calc(var(--bd) / -2) 0 0 calc(var(--bd) / -2);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--cream);
+  background: var(--black);
+  box-shadow: 9px 9px 0 var(--red), 0 24px 50px rgba(0, 0, 0, 0.5);
+  will-change: transform, opacity;
+}
+
+.bd img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.build-copy {
+  position: relative;
+  z-index: 40;
+  display: grid;
+  padding-bottom: 76px;
+}
+
+.build-scene {
+  grid-area: 1 / 1;
+  opacity: 0;
+  translate: 0 18px;
+  transition: opacity 0.4s ease, translate 0.5s ease;
+  pointer-events: none;
+}
+
+.build-scene.is-on {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+
+.build-no {
+  margin: 0 0 6px;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(26px, 6vw, 38px);
+  color: var(--red);
+}
+
+.build-scene .display {
+  margin: 0 0 8px;
+  font-size: clamp(44px, 12vw, 76px);
+  color: var(--cream);
+}
+
+.build-text {
+  max-width: 34ch;
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(248, 236, 220, 0.82);
+}
+
+.build-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0 14px 0 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--cream);
+}
+
+.build-price span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--red);
+}
+
+.build-scene .btn {
+  vertical-align: middle;
+}
+
+.build-dots {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 45;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.build-dots li {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--cream);
+  transition: background 0.3s, scale 0.3s;
+}
+
+.build-dots li.is-on {
+  background: var(--red);
+  border-color: var(--red);
+  scale: 1.4;
+}
+
+.build-hint {
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  translate: -50% 0;
+  z-index: 45;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(248, 236, 220, 0.55);
+}
+
+.build-track.is-still {
+  height: auto;
+}
+
+.build-track.is-still .build-stage {
+  position: relative;
+  height: auto;
+  min-height: 100svh;
+  padding: 40px 0;
+}
+
+@media (min-width: 900px) {
+  .build-stage {
+    align-items: center;
+  }
+
+  .build-discs {
+    inset: 0 0 0 38%;
+    --bd: min(40vw, 54svh);
+  }
+
+  .build-copy {
+    padding-bottom: 0;
+    padding-right: 62%;
+  }
+
+  .build-scene .display {
+    font-size: clamp(64px, 7vw, 110px);
+  }
+
+  .build-text {
+    font-size: 17px;
+  }
+
+  .build-dots {
+    right: 28px;
+  }
+}
+
+/* ---------- Sticky quick-order bar ---------- */
+.order-bar {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(calc(100% - 24px), 520px);
+  padding: 8px 8px 8px 20px;
+  border-radius: 999px;
+  background: var(--black);
+  color: var(--cream);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  translate: -50% 140%;
+  transition: translate 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.order-bar.is-on {
+  translate: -50% 0;
+}
+
+.order-bar p {
+  display: grid;
+  margin: 0 auto 0 0;
+  line-height: 1.2;
+}
+
+.order-bar b {
+  font-size: 14px;
+}
+
+.order-bar span {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

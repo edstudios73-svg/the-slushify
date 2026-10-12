@@ -22,6 +22,107 @@ import {
 
 document.body.classList.add('page-home')
 
+// Scroll-driven build: each disc eases between keyframes [x%, y%, scale, rotate, opacity]
+const buildDiscs = [
+  { key: 'combo', image: '/images/hd/combo-meal-5.webp' },
+  { key: 'slushy', image: '/images/hd/slushy-8.webp' },
+  { key: 'burger', image: '/images/hd/burger-3.webp' },
+  { key: 'fries', image: '/images/hd/fries-3.webp' },
+]
+
+const buildScenes = [
+  { no: 'The Slushify', title: 'Built Like a Legend', text: 'Frozen slushies, stacked burgers and golden fries. Scroll to see how we build it.' },
+  { no: '01 · The Pour', title: 'Pour', text: 'Original and fruity slushies, mixed fresh and poured ice cold.', price: '50', cta: { label: 'See slushies', href: '/menu.html#original' } },
+  { no: '02 · The Stack', title: 'Stack', text: 'A proper beef burger, stacked and served hot.', price: '80', cta: { label: 'See burgers', href: '/menu.html#food' } },
+  { no: '03 · The Crunch', title: 'Crunch', text: 'Wings GHC 60, fried yam GHC 40, extra fries GHC 20.', price: '20', cta: { label: 'See sides', href: '/menu.html#food' } },
+  { no: '04 · The Combo', title: 'The Combo', text: 'Burger, fries and wings in one plate. Message us and we get it going.', price: '120', cta: { label: 'Order a combo meal', href: orderLink('a Combo Meal'), ext: true } },
+]
+
+const buildFrames = {
+  //            scene 0              1                    2                    3                    4
+  combo: [[0, 0, 1.05, -4, 1], [-74, -48, 0.5, -14, 0.9], [-72, 68, 0.48, 8, 0.9], [-66, 72, 0.48, -10, 0.9], [0, 0, 1.08, 0, 1]],
+  slushy: [[0, 0, 0.4, 0, 0], [0, 0, 1.1, 0, 1], [-76, -46, 0.48, -12, 0.95], [76, -50, 0.48, 10, 0.95], [-86, 38, 0.6, -12, 1]],
+  burger: [[0, 0, 0.4, 0, 0], [76, -48, 0.48, 12, 0.95], [0, 0, 1.1, 0, 1], [-82, -30, 0.48, -8, 0.95], [86, 34, 0.6, 10, 1]],
+  fries: [[0, 0, 0.4, 0, 0], [66, 74, 0.48, -8, 0.95], [80, 44, 0.48, 12, 0.95], [0, 0, 1.1, 0, 1], [70, 78, 0.5, 6, 1]],
+}
+
+const mix = (a, b, t) => a + (b - a) * t
+const hold = (f) => {
+  const t = Math.min(1, Math.max(0, (f - 0.22) / 0.56))
+  return t * t * (3 - 2 * t)
+}
+
+const bindBuild = () => {
+  const track = document.querySelector('[data-build]')
+  if (!track) return
+  const discs = Object.fromEntries([...track.querySelectorAll('[data-disc]')].map((el) => [el.dataset.disc, el]))
+  const scenes = [...track.querySelectorAll('.build-scene')]
+  const dots = [...track.querySelectorAll('.build-dots li')]
+  const last = buildScenes.length - 1
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches
+  let on = -1
+
+  const render = (p) => {
+    const t = Math.min(last, Math.max(0, p * last))
+    const i = Math.min(last - 1, Math.floor(t))
+    const e = hold(t - i)
+    for (const [key, el] of Object.entries(discs)) {
+      const a = buildFrames[key][i]
+      const b = buildFrames[key][i + 1]
+      const [x, y, s, r, o] = a.map((v, n) => mix(v, b[n], e))
+      el.style.transform = `translate(${x}%, ${y}%) rotate(${r}deg) scale(${s})`
+      el.style.opacity = o
+      el.style.zIndex = Math.round(s * 10)
+    }
+    const now = Math.round(t)
+    if (now !== on) {
+      on = now
+      scenes.forEach((el, n) => el.classList.toggle('is-on', n === now))
+      dots.forEach((el, n) => el.classList.toggle('is-on', n === now))
+    }
+  }
+
+  if (still) {
+    track.classList.add('is-still')
+    render(1)
+    return
+  }
+
+  let ticking = false
+  const update = () => {
+    ticking = false
+    const rect = track.getBoundingClientRect()
+    const span = rect.height - window.innerHeight
+    render(Math.min(1, Math.max(0, -rect.top / span)))
+  }
+  const queue = () => {
+    if (!ticking) {
+      ticking = true
+      requestAnimationFrame(update)
+    }
+  }
+  addEventListener('scroll', queue, { passive: true })
+  addEventListener('resize', queue)
+  update()
+}
+
+// Slim order bar that appears once the hero is behind you
+const bindOrderBar = () => {
+  const bar = document.querySelector('.order-bar')
+  const hero = document.getElementById('hero')
+  const footer = document.querySelector('.site-footer, footer')
+  if (!bar || !hero) return
+  const check = () => {
+    const past = hero.getBoundingClientRect().bottom < 0
+    const atEnd = footer && footer.getBoundingClientRect().top < window.innerHeight - 40
+    const b = document.getElementById('build')?.getBoundingClientRect()
+    const inBuild = b && b.top < innerHeight * 0.5 && b.bottom > innerHeight * 0.5
+    bar.classList.toggle('is-on', past && !atEnd && !inBuild)
+  }
+  addEventListener('scroll', check, { passive: true })
+  check()
+}
+
 const story = [
   { word: 'Pour.', image: '/images/cats/slushy_2.jpg', alt: 'Red slushy being poured into a glass' },
   { word: 'Stack.', image: '/images/cats/burger_4.jpg', alt: 'A tray of stacked cheeseburgers and fries' },
@@ -121,7 +222,36 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
 
-    <section class="story light light-2" id="story">
+
+    <section class="build" id="build" aria-label="How we build it">
+      <div class="build-track" data-build>
+        <div class="build-stage">
+          ${rings('build-rings')}
+          <div class="build-discs" aria-hidden="true">
+            ${buildDiscs.map((d) => `<div class="bd" data-disc="${d.key}"><img src="${d.image}" alt="" width="640" height="640" loading="lazy" decoding="async" /></div>`).join('')}
+          </div>
+          <div class="build-copy container">
+            ${buildScenes
+              .map(
+                (s, i) => `
+            <div class="build-scene${i === 0 ? ' is-on' : ''}" data-scene="${i}">
+              <p class="build-no">${s.no}</p>
+              <h2 class="display">${s.title}</h2>
+              <p class="build-text">${s.text}</p>
+              ${s.price ? `<p class="build-price"><span>GHC</span>${s.price}</p>` : ''}
+              ${s.cta ? `<a class="btn btn-red" href="${s.cta.href}" ${s.cta.ext ? 'target="_blank" rel="noreferrer"' : ''}>${s.cta.label} ${arrowIcon}</a>` : ''}
+            </div>`
+              )
+              .join('')}
+          </div>
+          <ol class="build-dots" aria-hidden="true">${buildScenes.map((_, i) => `<li${i === 0 ? ' class="is-on"' : ''}></li>`).join('')}</ol>
+          <p class="build-hint" aria-hidden="true">Scroll</p>
+        </div>
+      </div>
+      ${drip('drip-black-2 drip-flip')}
+    </section>
+
+    <section class="story light light-2 after-drip" id="story">
       <div class="container">
         <div class="story-grid">
           ${story
@@ -237,7 +367,14 @@ document.querySelector('#app').innerHTML = `
   </main>
 
   ${renderFooter()}
+
+  <div class="order-bar" role="region" aria-label="Quick order">
+    <p><b>Combo Meal · GHC 120</b><span>Order on WhatsApp</span></p>
+    <a class="btn btn-red btn-sm" href="${orderLink('an order')}" target="_blank" rel="noreferrer">${icon('chat', 'icon icon-sm')} Order Now</a>
+  </div>
 `
 
 bindChrome()
 bindCarousels()
+bindBuild()
+bindOrderBar()
