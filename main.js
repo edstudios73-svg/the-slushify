@@ -31,11 +31,11 @@ const buildDiscs = [
 ]
 
 const buildScenes = [
-  { no: 'The Slushify', title: 'Built Like a Legend', text: 'Frozen slushies, stacked burgers and golden fries. Scroll to see how we build it.' },
-  { no: '01 · The Pour', title: 'Pour', text: 'Original and fruity slushies, mixed fresh and poured ice cold.', price: '50', cta: { label: 'See slushies', href: '/menu.html#original' } },
-  { no: '02 · The Stack', title: 'Stack', text: 'A proper beef burger, stacked and served hot.', price: '80', cta: { label: 'See burgers', href: '/menu.html#food' } },
-  { no: '03 · The Crunch', title: 'Crunch', text: 'Wings GHC 60, fried yam GHC 40, extra fries GHC 20.', price: '20', cta: { label: 'See sides', href: '/menu.html#food' } },
-  { no: '04 · The Combo', title: 'The Combo', text: 'Burger, fries and wings in one plate. Message us and we get it going.', price: '120', cta: { label: 'Order a combo meal', href: orderLink('a Combo Meal'), ext: true } },
+  { no: 'The Slushify', title: 'Built Like a Legend', text: 'Slushies, cocktails, burgers, sides and combo meals. Scroll to see the lineup.' },
+  { no: 'fresh and fruity', title: 'Slushies', text: 'Original and fruity slushies, mixed fresh and poured ice cold.', from: true, price: '50', cta: { label: 'See slushies', href: '/menu.html#original' } },
+  { no: 'stacked hot', title: 'Burgers', text: 'Beef Burger, stacked and served hot.', price: '80', cta: { label: 'See burgers', href: '/menu.html#food' } },
+  { no: 'hot and crispy', title: 'Sides', text: 'Wings GHC 60, Nuggets GHC 60, Fried Yam GHC 40, Extra Fries GHC 20.', from: true, price: '20', cta: { label: 'See sides', href: '/menu.html#food' } },
+  { no: 'full plates', title: 'Combo Meals', text: 'Burger, fries and wings in one plate. Message us and we get it going.', price: '120', cta: { label: 'Order a combo meal', href: orderLink('a Combo Meal'), ext: true } },
 ]
 
 const buildFrames = {
@@ -243,7 +243,7 @@ document.querySelector('#app').innerHTML = `
               <p class="build-no">${s.no}</p>
               <h2 class="display">${s.title}</h2>
               <p class="build-text">${s.text}</p>
-              ${s.price ? `<p class="build-price"><span>GHC</span>${s.price}</p>` : ''}
+              ${s.price ? `<p class="build-price"><span>${s.from ? 'from GHC' : 'GHC'}</span>${s.price}</p>` : ''}
               ${s.cta ? `<a class="btn btn-red" href="${s.cta.href}" ${s.cta.ext ? 'target="_blank" rel="noreferrer"' : ''}>${s.cta.label} ${arrowIcon}</a>` : ''}
             </div>`
               )
@@ -251,7 +251,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <ol class="build-dots" aria-hidden="true">${buildScenes.map((_, i) => `<li${i === 0 ? ' class="is-on"' : ''}></li>`).join('')}</ol>
           <p class="build-hint" aria-hidden="true">Scroll</p>
-          <p class="build-ghost" aria-hidden="true"><span>Pour</span><span>Stack</span><span>Crunch</span><span>Combo</span></p>
+          <p class="build-ghost" aria-hidden="true"><span>Slushies</span><span>Burgers</span><span>Sides</span><span>Combos</span></p>
         </div>
       </div>
       ${drip('drip-black-2 drip-flip')}
